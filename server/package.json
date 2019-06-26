@@ -1,0 +1,23 @@
+{
+  "name": "api_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js -r dotenv/config ./server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.4.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
