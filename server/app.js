@@ -1,5 +1,5 @@
 const express = require('express');
-const helloRouter = require('./routes/helloRouter');
+const teamRouter = require('./routes/teamRouter');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expresValidator = require('express-validator');
@@ -12,6 +12,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(expresValidator());
-app.use(helloRouter);
+app.use(teamRouter);
 
 module.exports = app;
