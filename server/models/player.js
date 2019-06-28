@@ -6,7 +6,7 @@ let playerSchema = new mongoose.Schema({
     steps: Number,
     points: Number,
     gender: String,
-    gmain: String,
+    gmail: String,
     team: {
         type: Schema.Types.ObjectId, 
         ref: 'Team'
