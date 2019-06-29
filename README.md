@@ -13,3 +13,19 @@
 - [ ] Create Dockerfile
 - [ ] Deploy into a AWS vm
 - [ ] User testing
+
+### REST API
+
+- `GET /api/v1/leaderboard/topteams`
+- `GET /api/v1/leaderboard/topplayers`
+- `GET /api/v1/leaderboard/topmaleplayers`
+- `GET /api/v1/leaderboard/topfemaleplayers`
+- `POST /api/v1/sync`
+
+```json
+{
+    "steps": "12002",
+    "syncDate": "2019-07-25",
+    "playerGmail": "user1@gmail.com"
+}
+```
