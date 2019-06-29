@@ -29,3 +29,21 @@
     "playerGmail": "user1@gmail.com"
 }
 ```
+### Developer Setup
+
+Fork and clone `https://github.com/99xt-incubator/walk2win.git`
+
+Install dependencies 
+
+```bash
+$ cd client
+$ npm i
+$ cd ../server
+$ npm i
+```
+Submit a pull request with the new feature
+
+
+### Deployment guidelines
+
+... TODO: Fill this after Dockerfiles 
