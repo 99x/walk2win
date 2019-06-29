@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
 	constructor(
 		private ngZone: NgZone,
 		private googleFitService: GoogleFitService
-	) {}
+	) { }
 
-	ngOnInit() {}
+	ngOnInit() { }
 
 	signIn() {
 		this.googleFitService
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 						});
 					}
 				});
-				this.ngZone.run(() => {});
+				this.ngZone.run(() => { });
 			},
 			err => {
 				console.log('error view steps');

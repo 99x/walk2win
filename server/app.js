@@ -1,5 +1,6 @@
 const express = require('express');
-const teamRouter = require('./routes/teamRouter');
+const leaderBoardRouter = require('./routes/leaderBoardRouter');
+const syncRouter = require('./routes/syncRouter');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expresValidator = require('express-validator');
@@ -12,6 +13,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(expresValidator());
-app.use(teamRouter);
+app.use(leaderBoardRouter);
+app.use(syncRouter);
 
 module.exports = app;

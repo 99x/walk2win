@@ -4,7 +4,7 @@
 
 - [x] Create initial project files
 - [ ] Add html template to the client folder
-- [ ] Create mongo models (~~Team~~, Player, SyncRecord)
+- [x] Create mongo models (Team, Player, SyncRecord)
 - [ ] Create required controllers 
 - [ ] Add method to accept timestamp + steps and update accordingly 
 - [x] Google Auth and extract daily steps 

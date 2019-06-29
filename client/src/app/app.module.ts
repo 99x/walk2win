@@ -15,4 +15,4 @@ import { GoogleFitService } from './services/google-fit.service';
 	imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
