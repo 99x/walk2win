@@ -4,7 +4,7 @@
     "indent": [
       true,
       "tabs",
-      4
+      2
     ],
     "array-type": false,
     "arrow-parens": false,

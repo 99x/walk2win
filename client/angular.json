@@ -31,7 +31,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.less"
-              ],
+            ],
             "scripts": []
           },
           "configurations": {
@@ -121,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "walk2win"
 }
