@@ -37,11 +37,12 @@ export class HomeComponent implements OnInit {
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
-				resp.bucket.forEach(element => {
+				resp.stepResponse.bucket.forEach(element => {
 					if (element.dataset[0].point[0]) {
 						this.stepCounts.push({
 							dateSteps: new Date(+element.endTimeMillis),
-							stepsPerDay: element.dataset[0].point[0].value[0].intVal
+							stepsPerDay: element.dataset[0].point[0].value[0].intVal,
+							playerGmail: resp.playerGmail
 						});
 					}
 				});
