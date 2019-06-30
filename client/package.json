@@ -21,7 +21,6 @@
     "@angular/router": "~8.0.1",
     "@ng-bootstrap/ng-bootstrap": "^5.0.0-rc.1",
     "bootstrap": "^4.3.1",
-    "circular-json": "^0.5.9",
     "font-awesome": "^4.7.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
