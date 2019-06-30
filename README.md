@@ -41,6 +41,13 @@ $ npm i
 $ cd ../server
 $ npm i
 ```
+Install mongodb and then import sample data
+
+```bash
+$ cd server
+$ npm run initdb
+```
+
 Start the REST API
 
 ```
