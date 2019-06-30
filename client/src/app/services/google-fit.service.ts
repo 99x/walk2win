@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, from, Observer } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 declare var gapi;
 
@@ -7,7 +7,7 @@ declare var gapi;
 export class GoogleFitService {
 
 	public isSignedIn = false;
-	private loggedInEmail = '';
+	public loggedInEmail = '';
 
 	constructor() {
 		gapi.load('client:auth2', () => {
@@ -20,7 +20,6 @@ export class GoogleFitService {
 
 	init() {
 		return new Promise((resolve, reject) => {
-			console.log('called init');
 			this.authenticate().then(this.loadClient);
 			resolve();
 		});
@@ -81,7 +80,6 @@ export class GoogleFitService {
 				})
 				.then(
 					response => {
-						// Handle the results here (response.result has the parsed body).
 						const stepVals = [];
 						response.result.bucket.forEach(element => {
 							if (element.dataset[0].point[0]) {
@@ -89,23 +87,29 @@ export class GoogleFitService {
 							}
 						});
 						console.log('response', response);
-						observer.next({ stepResponse: response.result, playerGmail: this.loggedInEmail });
+						observer.next(response.result);
 						observer.complete();
-						// return response;
-						// this.ngZone.run(() => {
-						// 	this.stepResp = stepVals;
-						// });
-						// this.stepResp = stepVals;
-						// console.log('this.stepResp', this.stepResp);
 					},
 					err => {
 						console.error('Execute error', err);
 						observer.error(err);
 						observer.complete();
-						// return err;
-						// this.stepResp = null;
+
 					}
 				);
 		});
+	}
+
+	public syncData(stepCounts) {
+		const requestBody = {
+			steps: stepCounts.reduce((total, current) =>
+				total + current.stepsPerDay
+				, 0),
+			syncDate: stepCounts[Object.keys(stepCounts).length - 1].dateSteps,
+			playerGmail: this.loggedInEmail
+		};
+		console.log('req body', requestBody);
+		// TODO: Call API
+
 	}
 }
