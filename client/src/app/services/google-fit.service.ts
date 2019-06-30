@@ -5,7 +5,10 @@ declare var gapi;
 
 @Injectable()
 export class GoogleFitService {
+
 	public isSignedIn = false;
+	private loggedInEmail = '';
+
 	constructor() {
 		gapi.load('client:auth2', () => {
 			gapi.auth2.init({
@@ -32,6 +35,9 @@ export class GoogleFitService {
 			.then(
 				() => {
 					console.log('Sign-in successful');
+					this.loggedInEmail = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail()
+					console.log('Logged in email', this.loggedInEmail);
+					this.isSignedIn = true;
 				},
 				err => {
 					console.error('Error signing in', err);
@@ -83,7 +89,7 @@ export class GoogleFitService {
 							}
 						});
 						console.log('response', response);
-						observer.next(response.result);
+						observer.next({ stepResponse: response.result, playerGmail: this.loggedInEmail });
 						observer.complete();
 						// return response;
 						// this.ngZone.run(() => {

@@ -7,9 +7,10 @@ import { GoogleFitService } from '../services/google-fit.service';
 	styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-	public stepResp = null;
-	private isSignedIn = false;
+	private stepResp = null;
+	private isStepsCounted = false;
 	private stepCounts = [];
+
 	constructor(
 		private ngZone: NgZone,
 		private googleFitService: GoogleFitService
@@ -21,31 +22,33 @@ export class HomeComponent implements OnInit {
 		this.googleFitService
 			.init()
 			.then(() => {
-				this.isSignedIn = true;
+				console.log('inited');
 			})
 			.catch(err => {
-				console.log(err);
+				console.log(`${err} init`);
 			});
 	}
 
 	viewStepCount() {
-		console.log('viewStepCount');
 		const timeGap = {
-			endTimeMillis: 1561652514300,
+			endTimeMillis: +new Date(),
 			startTimeMillis: 1561228200000
 		};
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
-				resp.bucket.forEach(element => {
+				resp.stepResponse.bucket.forEach(element => {
 					if (element.dataset[0].point[0]) {
 						this.stepCounts.push({
 							dateSteps: new Date(+element.endTimeMillis),
-							stepsPerDay: element.dataset[0].point[0].value[0].intVal
+							stepsPerDay: element.dataset[0].point[0].value[0].intVal,
+							playerGmail: resp.playerGmail
 						});
 					}
 				});
-				this.ngZone.run(() => { });
+				this.ngZone.run(() => {
+					this.isStepsCounted = true;
+				});
 			},
 			err => {
 				console.log('error view steps');
