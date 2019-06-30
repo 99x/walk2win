@@ -20,8 +20,12 @@ export class GoogleFitService {
 
 	init() {
 		return new Promise((resolve, reject) => {
-			this.authenticate().then(this.loadClient);
-			resolve();
+			try {
+				this.authenticate().then(this.loadClient);
+				resolve();
+			} catch (error) {
+				reject(error);
+			}
 		});
 	}
 
@@ -100,11 +104,9 @@ export class GoogleFitService {
 		});
 	}
 
-	public syncData(stepCounts) {
+	public syncData(stepCounts: any, totalStepCount: number) {
 		const requestBody = {
-			steps: stepCounts.reduce((total, current) =>
-				total + current.stepsPerDay
-				, 0),
+			steps: totalStepCount,
 			syncDate: stepCounts[Object.keys(stepCounts).length - 1].dateSteps,
 			playerGmail: this.loggedInEmail
 		};

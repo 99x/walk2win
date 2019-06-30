@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from "./home/home.component";
 import { TeamLeaderboardComponent } from './components/team-leaderboard/team-leaderboard.component';
+import { SyncComponent } from './components/sync/sync.component';
 
 const routes: Routes = [
 	{
@@ -11,7 +11,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'sync',
-		component: HomeComponent
+		component: SyncComponent
 	}
 ];
 
