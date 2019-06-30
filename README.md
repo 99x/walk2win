@@ -41,6 +41,21 @@ $ npm i
 $ cd ../server
 $ npm i
 ```
+Start the REST API
+
+```
+$ cd server
+$ npm run dev
+```
+
+Start the Angular app
+
+```
+$ cd client
+$ ng serve --open
+```
+
+
 Submit a pull request with the new feature
 
 
