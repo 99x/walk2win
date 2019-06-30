@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 declare var gapi;
 
@@ -12,8 +13,8 @@ export class GoogleFitService {
 	constructor() {
 		gapi.load('client:auth2', () => {
 			gapi.auth2.init({
-				client_id:
-					'195162494249-aqt60jap5s951apfubo2auvclde0ge9i.apps.googleusercontent.com'
+				client_id: environment.client_id
+
 			});
 		});
 	}
@@ -49,7 +50,7 @@ export class GoogleFitService {
 	}
 
 	public loadClient() {
-		gapi.client.setApiKey('AIzaSyDadiChkwWKcG_eIRR5tErt22AeUq8oF6U');
+		gapi.client.setApiKey(environment.apiKey);
 		return gapi.client
 			.load('https://content.googleapis.com/discovery/v1/apis/fitness/v1/rest')
 			.then(
