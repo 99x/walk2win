@@ -32,6 +32,7 @@ export class GoogleFitService {
 			.then(
 				() => {
 					console.log('Sign-in successful');
+					this.isSignedIn = true;
 				},
 				err => {
 					console.error('Error signing in', err);
