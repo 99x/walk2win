@@ -2,13 +2,16 @@
     <button *ngIf="!googleFitService.isSignedIn" (click)="signIn()" class="btn btn-primary">
         Sign in to view step count
     </button>
-    <button *ngIf="googleFitService.isSignedIn" (click)="viewStepCount()" class="btn btn-primary">
+    <button *ngIf="googleFitService.isSignedIn && !isStepsCounted" (click)="viewStepCount()" class="btn btn-primary">
         Check step count
+    </button>
+    <button *ngIf="isStepsCounted" (click)="syncWithApi()" class="btn btn-primary">
+        Sync
     </button>
     <br />
     <br />
     <div *ngIf="isStepsCounted">
-        Player GMAIL - {{stepCounts[0].playerGmail}}
+        Player GMAIL - {{googleFitService.loggedInEmail}}
         <table class="table table-hover">
             <thead>
                 <tr>

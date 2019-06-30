@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 	private stepResp = null;
 	private isStepsCounted = false;
 	private stepCounts = [];
+	private playerGmail;
 
 	constructor(
 		private ngZone: NgZone,
@@ -37,12 +38,11 @@ export class HomeComponent implements OnInit {
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
-				resp.stepResponse.bucket.forEach(element => {
+				resp.bucket.forEach(element => {
 					if (element.dataset[0].point[0]) {
 						this.stepCounts.push({
 							dateSteps: new Date(+element.endTimeMillis),
-							stepsPerDay: element.dataset[0].point[0].value[0].intVal,
-							playerGmail: resp.playerGmail
+							stepsPerDay: element.dataset[0].point[0].value[0].intVal
 						});
 					}
 				});
@@ -55,4 +55,9 @@ export class HomeComponent implements OnInit {
 			}
 		);
 	}
+
+	syncWithApi() {
+		this.googleFitService.syncData(this.stepCounts);
+	}
+
 }
