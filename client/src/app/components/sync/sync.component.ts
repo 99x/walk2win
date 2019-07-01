@@ -45,10 +45,10 @@ export class SyncComponent implements OnInit {
 								stepsPerDay: element.dataset[0].point[0].value[0].intVal
 							});
 						}
-						this.totalStepCount = this.stepCounts.reduce((total, current) =>
-							total + current.stepsPerDay
-							, 0)
 					});
+					this.totalStepCount = this.stepCounts.reduce((total, current) =>
+						total + current.stepsPerDay
+						, 0)
 					this.isStepsCounted = true;
 				});
 			},
