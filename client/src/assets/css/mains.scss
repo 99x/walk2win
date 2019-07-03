@@ -147,6 +147,7 @@ a{
     .member{
         font-size: 14px;
         padding: 15px 0;
+        text-align: left;
         a{
             cursor: pointer;
         }
@@ -177,15 +178,20 @@ a{
     padding: 50px 5px;
 }
 
+.connect{
+    text-align: center;
+    padding: 10px;
+    
+}
+
 // Custom CSS
 
 .nav li a{
-    background: #ddd;
+    background-color:#f47e47 !important;
     border-radius: 0px !important;
     color: black;
 }
 
-.nav-pills .nav-link.active{
-    background-color:#f47e47 !important;
-    color:white !important;
+.nav li .active{
+    background-color:#fff !important;
 }
