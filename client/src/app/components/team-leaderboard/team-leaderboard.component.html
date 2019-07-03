@@ -1,8 +1,15 @@
-<ngb-tabset>
+<ngb-tabset justify="fill">
     <ngb-tab>
         <ng-template ngbTabTitle>
-            <i class="icon-group"></i>
-            Leaderboard
+            <i class="icon-user"></i>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <app-sync></app-sync>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <i class="icon-group"></i> Leaderboard
         </ng-template>
         <ng-template ngbTabContent>
             <ul class="leaderboard">
@@ -25,7 +32,6 @@
     <ngb-tab>
         <ng-template ngbTabTitle>
             <i class="icon-male"></i>
-            Boys
         </ng-template>
         <ng-template ngbTabContent>
             <ul class="teammates">
@@ -61,7 +67,6 @@
     <ngb-tab>
         <ng-template ngbTabTitle>
             <i class="icon-female"></i>
-            Girls
         </ng-template>
         <ng-template ngbTabContent>
             <ul class="teammates">
