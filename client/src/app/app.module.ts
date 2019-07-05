@@ -11,10 +11,12 @@ import { TeamLeaderboardComponent } from './components/team-leaderboard/team-lea
 import { SyncComponent } from './components/sync/sync.component';
 
 import { GoogleFitService } from './services/google-fit.service';
+import { DataService } from './services/data.service';
+import { SharedConstants } from './constants/shared.constants';
 
 @NgModule({
 	declarations: [AppComponent, SyncComponent, TeamLeaderboardComponent],
-	providers: [GoogleFitService],
+	providers: [GoogleFitService, DataService, SharedConstants],
 	imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, NgbModule],
 	bootstrap: [AppComponent]
 })

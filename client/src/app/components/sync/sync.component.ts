@@ -25,7 +25,7 @@ export class SyncComponent implements OnInit {
 				console.log('inited');
 			})
 			.catch(err => {
-				console.log(`${err} init`);
+				console.log(err);
 			});
 	}
 

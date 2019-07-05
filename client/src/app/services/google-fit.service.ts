@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SharedConstants } from '../constants/shared.constants';
 
 declare var gapi;
 
@@ -11,7 +12,7 @@ export class GoogleFitService {
 	public loggedInEmail = '';
 
 	constructor() {
-		gapi.load('client:auth2', () => {
+		gapi.load(SharedConstants.GoogleAuth, () => {
 			gapi.auth2.init({
 				client_id: environment.client_id
 
@@ -22,8 +23,9 @@ export class GoogleFitService {
 	init() {
 		return new Promise((resolve, reject) => {
 			try {
-				this.authenticate().then(this.loadClient);
-				resolve();
+				this.authenticate().then(this.loadClient).then(() => {
+					resolve();
+				});
 			} catch (error) {
 				reject(error);
 			}
@@ -34,17 +36,16 @@ export class GoogleFitService {
 		return gapi.auth2
 			.getAuthInstance()
 			.signIn({
-				scope: 'https://www.googleapis.com/auth/fitness.activity.read'
+				scope: SharedConstants.GoogleFitnessApiScope
 			})
 			.then(
 				() => {
-					console.log('Sign-in successful');
 					this.loggedInEmail = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail()
-					console.log('Logged in email', this.loggedInEmail);
+					console.log(this.loggedInEmail);
 					this.isSignedIn = true;
 				},
 				err => {
-					console.error('Error signing in', err);
+					console.error(err);
 				}
 			);
 	}
@@ -52,13 +53,13 @@ export class GoogleFitService {
 	public loadClient() {
 		gapi.client.setApiKey(environment.apiKey);
 		return gapi.client
-			.load('https://content.googleapis.com/discovery/v1/apis/fitness/v1/rest')
+			.load(SharedConstants.GoogleFitnessApiUrl)
 			.then(
 				() => {
 					console.log('GAPI client loaded for API');
 				},
 				err => {
-					console.error('Error loading GAPI client for API', err);
+					console.error(err);
 				}
 			);
 	}
@@ -67,13 +68,12 @@ export class GoogleFitService {
 		return new Observable<any>((observer: Observer<any>) => {
 			return gapi.client.fitness.users.dataset
 				.aggregate({
-					userId: 'me',
+					userId: SharedConstants.GoogleFitUserId,
 					resource: {
 						aggregateBy: [
 							{
-								dataTypeName: 'com.google.step_count.delta',
-								dataSourceId:
-									'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
+								dataTypeName: SharedConstants.GoogleFitDataTypeName,
+								dataSourceId: SharedConstants.GoogleFitDataSourceId
 							}
 						],
 						endTimeMillis: timeGap.endTimeMillis,
@@ -91,12 +91,12 @@ export class GoogleFitService {
 								stepVals.push(element.dataset[0].point[0].value[0].intVal);
 							}
 						});
-						console.log('response', response);
+						console.log(response);
 						observer.next(response.result);
 						observer.complete();
 					},
 					err => {
-						console.error('Execute error', err);
+						console.error(err);
 						observer.error(err);
 						observer.complete();
 
@@ -111,7 +111,7 @@ export class GoogleFitService {
 			syncDate: stepCounts[Object.keys(stepCounts).length - 1].dateSteps,
 			playerGmail: this.loggedInEmail
 		};
-		console.log('req body', requestBody);
+		console.log(requestBody);
 		// TODO: Call API
 
 	}
