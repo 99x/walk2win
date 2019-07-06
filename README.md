@@ -17,6 +17,7 @@
 ### REST API
 
 - `GET /api/v1/leaderboard/topteams`
+- `GET /api/v1/leaderboard/topteams/{teamId}`
 - `GET /api/v1/leaderboard/topplayers`
 - `GET /api/v1/leaderboard/topmaleplayers`
 - `GET /api/v1/leaderboard/topfemaleplayers`
