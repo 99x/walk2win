@@ -7,6 +7,16 @@ module.exports.topTeams = (req, res) => {
     })
 }
 
+module.exports.topTeamPlayers = (req, res) => {    
+    Player.find({team: req.params.teamId}, (error, players) => {
+        if(error) {
+            res.json(error);
+            return;
+        }
+        res.json(players.sort((a, b) => b.points - a.points));
+    })
+}
+
 module.exports.topPlayers = (req, res) => {    
     Player.find({}, (error, players) => {
         res.json(players.sort((a, b) => b.points - a.points));
