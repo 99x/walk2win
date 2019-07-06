@@ -32,6 +32,9 @@
 ```
 ### Developer Setup
 
+Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
+Add the keys to the relevant `environment.ts` file in location `client/src/environments`
+
 Fork and clone `https://github.com/99xt-incubator/walk2win.git`
 
 Install dependencies 
