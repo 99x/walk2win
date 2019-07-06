@@ -22,8 +22,8 @@
                 <li class="team" *ngFor="let team of teams; let i = index">
                     <div>{{ (i + 1) | number : '2.' }}</div>
                     <div><a href="#">{{ team.name }}</a></div>
-                    <div>{{ team.steps }}</div>
-                    <div>{{ team.points }}</div>
+                    <div>{{ team.steps | number : '2.' }}</div>
+                    <div>{{ team.points | number : '2.' }}</div>
                 </li>
             </ul>
         </ng-template>
@@ -34,31 +34,18 @@
             <i class="icon-male"></i>
         </ng-template>
         <ng-template ngbTabContent>
-            <ul class="teammates">
+            <ul class="leaderboard">
                 <li class="title">
+                    <div>#</div>
                     <div>Name</div>
                     <div>Steps</div>
                     <div>Points</div>
                 </li>
-                <li class="member">
-                    <div>Yohan jayarathna</div>
-                    <div>413,288</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Seshani gamage</div>
-                    <div>349,832</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Oshadi wattuhewa</div>
-                    <div>381,112</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Janindhu ranawaka</div>
-                    <div>382,345</div>
-                    <div>350</div>
+                <li class="team" *ngFor="let player of malePlayers; let i = index">
+                    <div>{{ (i + 1) | number : '2.' }}</div>
+                    <div><a href="#">{{ player.name }}</a></div>
+                    <div>{{ player.steps | number : '2.' }}</div>
+                    <div>{{ player.points | number : '2.' }}</div>
                 </li>
             </ul>
         </ng-template>
@@ -69,31 +56,18 @@
             <i class="icon-female"></i>
         </ng-template>
         <ng-template ngbTabContent>
-            <ul class="teammates">
+            <ul class="leaderboard">
                 <li class="title">
+                    <div>#</div>
                     <div>Name</div>
                     <div>Steps</div>
                     <div>Points</div>
                 </li>
-                <li class="member">
-                    <div>Oshadi wattuhewa</div>
-                    <div>413,288</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Seshani gamage</div>
-                    <div>349,832</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Yohan jayarathna</div>
-                    <div>381,112</div>
-                    <div>350</div>
-                </li>
-                <li class="member">
-                    <div>Janindhu ranawaka</div>
-                    <div>382,345</div>
-                    <div>350</div>
+                <li class="team" *ngFor="let player of femalePlayers; let i = index">
+                    <div>{{ (i + 1) | number : '2.' }}</div>
+                    <div><a href="#">{{ player.name }}</a></div>
+                    <div>{{ player.steps | number : '2.' }}</div>
+                    <div>{{ player.points | number : '2.' }}</div>
                 </li>
             </ul>
         </ng-template>
