@@ -3,7 +3,7 @@
 ### Milestones
 
 - [x] Create initial project files
-- [ ] Add html template to the client folder
+- [x] Add html template to the client folder
 - [x] Create mongo models (Team, Player, SyncRecord)
 - [x] Create required controllers 
 - [x] Add method to accept date + steps and update accordingly 
@@ -31,6 +31,9 @@
 }
 ```
 ### Developer Setup
+
+Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
+Add the keys to the relevant `environment.ts` file in location `client/src/environments`
 
 Fork and clone `https://github.com/99xt-incubator/walk2win.git`
 
