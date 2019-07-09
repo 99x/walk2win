@@ -3,7 +3,7 @@
 ### Milestones
 
 - [x] Create initial project files
-- [ ] Add html template to the client folder
+- [x] Add html template to the client folder
 - [x] Create mongo models (Team, Player, SyncRecord)
 - [x] Create required controllers 
 - [x] Add method to accept date + steps and update accordingly 
