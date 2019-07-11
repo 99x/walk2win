@@ -1,5 +1,5 @@
 const { google } = requrie("googleapis");
-
+const auth = require("./auth");
 
 // const defaultScope = [
 //   'https://www.googleapis.com/auth/plus.me',
@@ -13,14 +13,11 @@ let GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 passport.use(
   new GoogleStrategy(
     {
-      clientID: "",
-      clientSecret: "",
-      callbackURL: ""
+      clientID: auth.clientID,
+      clientSecret: auth.clientSecret,
+      callbackURL: auth.callbackURL
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(accessToken);
-      console.log(refreshToken);
-      console.log(profile);
       done();
     }
   )

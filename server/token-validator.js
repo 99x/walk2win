@@ -13,7 +13,6 @@ const oauth2Client = new OAuth2(
 
 exports.checkToken = (req, res, next) => {
   // check for user
-  console.log("HERE");
   if(!req.headers.authorization) {
     return next();
   }

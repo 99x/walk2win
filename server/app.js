@@ -12,21 +12,13 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-const { oauth2Client } = require("./token-validator");
-
-
-// const oauth2Client = new google.auth.OAuth2(
-//   auth.googleAuth.clientID,
-//   auth.googleAuth.clientSecret,
-//   auth.googleAuth.callbackURL
-// );
-
 const app = express();
 
 let passport = require("passport");
 let GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 let Player = require("./models/player");
 
+app.use(express.static('../client/dist/walk2win'));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -83,12 +75,6 @@ passport.use(
 
 app.use(bodyParser.json());
 
-// generate a url that asks permissions for Blogger and Google Calendar scopes
-const scopes = [
-  "https://www.googleapis.com/auth/blogger",
-  "https://www.googleapis.com/auth/calendar"
-];
-
 app.get(
   "/api/v1/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
@@ -110,12 +96,5 @@ app.use(cors());
 app.use(expresValidator());
 app.use(leaderBoardRouter);
 app.use(syncRouter);
-
-// GET /auth/google/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-const server = require("./cron");
 
 module.exports = app;
