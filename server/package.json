@@ -17,7 +17,11 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
-    "mongoose": "^5.4.16"
+    "googleapis": "^40.0.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.16",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

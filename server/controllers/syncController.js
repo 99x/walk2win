@@ -3,8 +3,7 @@ let Player = require('../models/player');
 let SyncRecord = require('../models/syncrecord');
 const constants = require('../constants');
 
-module.exports.syncSteps = (req, res) => {   
-
+module.exports.syncSteps = (req, res) => {
     let syncDate = req.body.syncDate;
     let steps = req.body.steps;
     let playerGmail = req.body.playerGmail;
@@ -30,7 +29,6 @@ module.exports.syncSteps = (req, res) => {
                 return;
             }
 
-
             let points = 0;
             for(let mark of constants.marks) {
                 if(mark[0] <= steps) {
@@ -55,7 +53,8 @@ module.exports.syncSteps = (req, res) => {
             });
         }
     });
+}
 
-
-    
+module.exports.authCb = function(req, res) {
+    res.redirect('/');
 }
