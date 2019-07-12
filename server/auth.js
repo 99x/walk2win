@@ -1,7 +1,7 @@
 const auth = {
     googleAuth: {
-        clientID: "",
-        clientSecret: "",
+        clientID: "xx",
+        clientSecret: "xx",
         callbackURL: ""
     }
 }

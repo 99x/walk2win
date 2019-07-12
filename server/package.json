@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -r dotenv/config ./server.js",
-    "prod": "node ./server.js",
+    "prod": "node -r dotenv/config ./server.js",
     "initdb": "node ./data/initialize.js"
   },
   "author": "",
