@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	baseApi: 'http://localhost:5000',
+	baseApi: 'http://localhost',
 	client_id: 'YOUR_CLIENT_ID',
 	apiKey: 'YOR_API_KEY'
 };
