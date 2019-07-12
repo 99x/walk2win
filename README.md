@@ -21,10 +21,8 @@
 - `GET /api/v1/leaderboard/topplayers`
 - `GET /api/v1/leaderboard/topmaleplayers`
 - `GET /api/v1/leaderboard/topfemaleplayers`
-- `POST /api/v1/sync`
+- `POST /api/v1/sync` TODO - add post body
 
-TODO - add post body
-```
 ### Developer Setup
 
 Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
