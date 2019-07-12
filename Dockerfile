@@ -4,11 +4,15 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app
+COPY . /usr/src/app
+
+WORKDIR /usr/src/app/client
+
+RUN npm install && npm run build
+
+WORKDIR /usr/src/app/server
 
 RUN npm install
-
-COPY . /usr/src/app
 
 EXPOSE 3003
 
