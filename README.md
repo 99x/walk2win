@@ -10,8 +10,8 @@
 - [x] Google Auth and extract daily steps 
 - [ ] API integration testing
 - [ ] Implement frontend according to the design
-- [ ] Create Dockerfile
-- [ ] Deploy into a AWS vm
+- [x] Create Dockerfile and docker-compose.yml
+- [x] Deploy into a AWS vm
 - [ ] User testing
 
 ### REST API
@@ -42,6 +42,7 @@ Install mongodb and then import sample data
 
 ```bash
 $ cd server
+// Enter some rows into data/data.csv
 $ npm run initdb
 ```
 
