@@ -1,22 +1,43 @@
 <div class="connect">
-    <div>Your steps counts by date</div>
-    <button *ngIf="!googleFitService.isSignedIn" (click)="signIn()" class="btn btn-primary">
+
+
+
+    <div class="connect-container" *ngIf="true">
+        <div class="Logo"><img src="./assets/img/w2w-logo.png" width="220"></div>
+
+        <span class="btn btn-primary" (click)="signIn()"><i class="icon-google"></i> Connect GoogleFit</span>
+    </div>
+
+    <div class="connect-container" *ngIf="true">
+        <!-- <div *ngIf="tempMessage">{{tempMessage + ' '+ getGmail()}}</div> -->
+        <span (click)="getSyncData()" class="btn btn-primary">
+            <i class="icon-sync"></i> Sync</span>
+    </div>
+
+
+    <!-- <button *ngIf="!googleFitService.isSignedIn" (click)="signIn()" class="btn btn-primary">
         Sign in to view step count
-    </button>
-    <button *ngIf="googleFitService.isSignedIn && !isStepsCounted" (click)="viewStepCount()" class="btn btn-primary">
-        Check step count
-    </button>
-    <span> <button *ngIf="isStepsCounted" (click)="syncWithApi()" class="btn btn-primary">Sync</button> {{googleFitService.loggedInEmail}} </span>
-    <ul *ngIf="isStepsCounted" class="teammates">
-        <li class="title">
-          <div>Date</div> <div>Steps</div> <div>Points</div>
-        </li>
-        <li *ngFor="let step of stepCounts; let i = index" class="member">
-            <div>{{ step.dateSteps | date: 'fullDate' }}</div> <div>{{ step.stepsPerDay }}</div> <div>350</div>
-        </li>
-        
-        <li class="member total">
-            <div>Total</div> <div>{{ totalStepCount }}</div> <div>350</div>
-        </li>
-      </ul>
+    </button> -->
+
+    <div *ngIf="false">
+        <span class="title">Your steps counts by date</span>
+        <ul *ngIf="isStepsCounted" class="teammates">
+            <li class="title">
+                <div>Date</div>
+                <div>Steps</div>
+                <div>Points</div>
+            </li>
+            <li *ngFor="let step of stepCounts; let i = index" class="member">
+                <div>{{ step.dateSteps | date: 'fullDate' }}</div>
+                <div>{{ step.stepsPerDay }}</div>
+                <div>350</div>
+            </li>
+
+            <li class="member total">
+                <div>Total</div>
+                <div>{{ totalStepCount }}</div>
+                <div>350</div>
+            </li>
+        </ul>
+    </div>
 </div>
