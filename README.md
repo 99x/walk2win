@@ -75,13 +75,14 @@ $ ssh -i <key-file>.pem <username>@<domain>
 Remove existing directory and get a clone from deployment repository
 
 ```
-$ sudo rm -rf <repo>
+$ sudo rm -rf <repo-name>
 $ git clone <repo-url>
 ```
 
 Create containers 
 
 ```
+$ cd <repo-name>
 $ docker-compose up --build -d
 ```
 ### Initialize db from data.csv
