@@ -8,7 +8,7 @@ const cors = require("cors");
 const auth = require("./auth");
 
 mongoose.connect(
-  process.env.MONGO_STR,
+  'mongodb://rj:Miyoungrae123@ds135519.mlab.com:35519/assetr',
   { useNewUrlParser: true }
 );
 

@@ -4,9 +4,9 @@
 
 export const environment = {
 	production: false,
-	baseApi: 'http://localhost',
-	client_id: 'YOUR_CLIENT_ID',
-	apiKey: 'YOR_API_KEY'
+	baseApi: 'http://localhost:3003',
+	client_id: '195162494249-aqt60jap5s951apfubo2auvclde0ge9i.apps.googleusercontent.com',
+	apiKey: 'AIzaSyDadiChkwWKcG_eIRR5tErt22AeUq8oF6U'
 };
 
 /*
