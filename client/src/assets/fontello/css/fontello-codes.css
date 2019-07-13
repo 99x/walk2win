@@ -7,6 +7,8 @@
 .icon-heart:before { content: '\e805'; } /* '' */
 .icon-star-empty:before { content: '\e806'; } /* '' */
 .icon-left-thin:before { content: '\e807'; } /* '' */
+.icon-sync:before { content: '\e808'; } /* '' */
 .icon-crown:before { content: '\e844'; } /* '' */
 .icon-female:before { content: '\f182'; } /* '' */
 .icon-male:before { content: '\f183'; } /* '' */
+.icon-google:before { content: '\f1a0'; } /* '' */

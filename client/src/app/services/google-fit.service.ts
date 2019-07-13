@@ -40,8 +40,8 @@ export class GoogleFitService {
 			})
 			.then(
 				() => {
-					this.loggedInEmail = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail()
-					console.log(this.loggedInEmail);
+					localStorage.setItem('googleoauth', gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token);
+					localStorage.setItem('gmail', gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail());
 					this.isSignedIn = true;
 				},
 				err => {

@@ -73,6 +73,18 @@
       "src": "entypo"
     },
     {
+      "uid": "a73c5deb486c8d66249811642e5d719a",
+      "css": "sync",
+      "code": 59400,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f06fe7ff18d1c591bc1183cb3ab105e9",
+      "css": "google",
+      "code": 61856,
+      "src": "fontawesome"
+    },
+    {
       "uid": "ed6c6b73dcbdd7aea31b63cf7219c414",
       "css": "rent",
       "code": 59392,

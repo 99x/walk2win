@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { GoogleFitService } from '../../services/google-fit.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
 	selector: 'app-sync',
@@ -11,20 +12,42 @@ export class SyncComponent implements OnInit {
 	private stepCounts = [];
 	private totalStepCount = 0;
 
+	public getGmail(): string {
+		return localStorage.getItem('gmail');
+	}
+
 	constructor(
 		private ngZone: NgZone,
-		private googleFitService: GoogleFitService
+		private googleFitService: GoogleFitService,
+		private dataService: DataService
 	) { }
 
 	ngOnInit() { }
 
 	signIn() {
-		this.googleFitService
-			.init()
-			.then(() => {
-				console.log('inited');
-			})
-			.catch(err => {
+		if (!localStorage.getItem('googleoauth')) {
+			this.googleFitService
+				.init()
+				.then(() => {
+					console.log('inited');
+					this.getSyncData();
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		} else {
+			this.getSyncData();
+		}
+	}
+
+	getSyncData() {
+		const syncDataUrl = `/api/v1/sync?gmail=${this.getGmail()}`;
+
+		this.dataService.getSyncData(syncDataUrl).subscribe(
+			(res: any) => {
+				console.log(res);
+			},
+			err => {
 				console.log(err);
 			});
 	}
