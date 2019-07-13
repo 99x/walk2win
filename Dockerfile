@@ -16,6 +16,4 @@ RUN npm install
 
 EXPOSE 3003
 
-CMD ["npm", "run", "initdb"]
-
 CMD ["npm", "run", "prod"]

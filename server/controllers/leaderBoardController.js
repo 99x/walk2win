@@ -18,19 +18,19 @@ module.exports.topTeamPlayers = (req, res) => {
 }
 
 module.exports.topPlayers = (req, res) => {    
-    Player.find({}, (error, players) => {
+    Player.find({team: null}, (error, players) => {
         res.json(players.sort((a, b) => b.points - a.points));
     })
 }
 
 module.exports.topMalePlayers = (req, res) => {    
-    Player.find({gender: 'male'}, (error, players) => {
+    Player.find({gender: 'male', team: null}, (error, players) => {
         res.json(players.sort((a, b) => b.points - a.points));
     })
 }
 
 module.exports.topFemalePlayers = (req, res) => {    
-    Player.find({gender: 'female'}, (error, players) => {
+    Player.find({gender: 'female', team: null}, (error, players) => {
         res.json(players.sort((a, b) => b.points - a.points));
     })
 }

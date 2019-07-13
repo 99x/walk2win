@@ -3,12 +3,20 @@ version: '2'
 services:
   server:
     build: . 
+    restart: always
     ports:
       - "80:3003"
     links:
       - database
+    networks:
+      - net
 
   database:
     image: mongo
     ports:
       - "27017:27017" 
+    networks:
+      - net
+networks:
+  net:
+    driver: bridge
