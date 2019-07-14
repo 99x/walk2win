@@ -14,30 +14,46 @@ const oauth2Client = new OAuth2(
 exports.checkToken = (req, res, next) => {
   // check for user
   if(!req.headers.authorization) {
-    return next();
+    res.json({
+      error: true,
+      message: "Authorization header not found",
+      loginRedirect: true
+    });
+    return;
+    // return next("Auth header not found", null);
   }
 
   const oauthAccessToken = req.headers.authorization.split("Bearer ")[1];
+  const gmail = req.headers.gmail;
+  console.log(oauthAccessToken, gmail);
   if (!oauthAccessToken) {
     return next();
   }
 
-  console.log(oauthAccessToken);
-  Player.findOne({ accessToken: oauthAccessToken }, (error, player) => {
+  Player.findOne({ gmail: gmail, accessToken: oauthAccessToken }, (error, player) => {
     if(error) {
         return next(error);
     }
 
+    console.log("Player", player);
+
     if(!player) {
         console.log("Invalid OAuth access token");
-        return next();
+        return res.json({
+          error: true,
+          message: "Player not found, please login",
+          loginRedirect: true
+        });
     }
 
     // subtract current time from stored expiry_date and see if less than 5 minutes (300s) remain
     const expiryDate = player.expiry_date;
     const expSecs = moment().diff(expiryDate, 's');
 
-    next();
+
+    console.log("Here")
+    console.log("Expiring in", expiryDate, expSecs);
+    console.log("After");
     if (
         expSecs > -300
     ) {
@@ -68,6 +84,9 @@ exports.checkToken = (req, res, next) => {
           }
         );
       });
+    }
+    else {
+      next();
     }
   });
 };
