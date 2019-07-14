@@ -7,10 +7,9 @@ const expresValidator = require("express-validator");
 const cors = require("cors");
 const auth = require("./auth");
 
-mongoose.connect(
-  process.env.MONGO_STR,
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGO_STR, {
+  useNewUrlParser: true
+});
 
 const app = express();
 
@@ -18,7 +17,7 @@ let passport = require("passport");
 let GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 let Player = require("./models/player");
 
-app.use(express.static('../client/dist/walk2win'));
+app.use(express.static("../client/dist/walk2win"));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -79,16 +78,9 @@ app.get(
   "/api/v1/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function(req, res) {
-    // fitness.users.dataSources.datasets.get({ 'userId': 'me', 'dataSourceId': dataSourceId, 'datasetId': dt.getTimeDaily()}, function(err, response)
-    //     {
-    //         console.log("ABC: ");
-    //         console.log(JSON.stringify(err, null, 2));
-    //         if(err) callback(err, null);
-    //         callback(null, response);
-    //     });
-
-    res.json({ status: "Ok" });
-    //res.redirect('/');
+    res.cookie("gmail", req.user.gmail);
+    res.cookie("access_token", req.user.accessToken);
+    res.redirect("/");
   }
 );
 
