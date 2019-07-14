@@ -1,4 +1,5 @@
 const express = require("express");
+const authRouter = require("./routes/authRouter");
 const leaderBoardRouter = require("./routes/leaderBoardRouter");
 const syncRouter = require("./routes/syncRouter");
 const bodyParser = require("body-parser");
@@ -86,6 +87,7 @@ app.get(
 
 app.use(cors());
 app.use(expresValidator());
+app.use(authRouter);
 app.use(leaderBoardRouter);
 app.use(syncRouter);
 

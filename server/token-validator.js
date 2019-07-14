@@ -27,7 +27,7 @@ exports.checkToken = (req, res, next) => {
     res.json({
       error: true,
       tokenRefreshed: false,
-      message: "Authorization header not found",
+      message: "Gmail header not found",
       loginRedirect: true
     });
     return;
