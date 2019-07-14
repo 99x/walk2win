@@ -57,13 +57,13 @@ a{
             color: #86B24C !important;
         }
     }
-    li:nth-child(7), li:nth-child(8), li:nth-child(9), li:nth-child(10), li:nth-child(11){
-        border-bottom: 2px solid rgb(147, 172, 242);
+    // li:nth-child(7), li:nth-child(8), li:nth-child(9), li:nth-child(10), li:nth-child(11){
+    //     border-bottom: 2px solid rgb(147, 172, 242);
         
-        div:first-child{
-            color: rgb(147, 172, 242) !important;
-        }
-    }
+    //     div:first-child{
+    //         color: rgb(147, 172, 242) !important;
+    //     }
+    // }
 
     li{
         flex-wrap: nowrap;
@@ -127,11 +127,15 @@ a{
         align-items: center;
         
         div:first-child{
-            width: 100%;
+            min-width: 40px;
             padding-left:10px;
         }
 
         div:nth-child(2){
+            width: 100%;
+        }
+
+        div:nth-child(3){
             max-width: 150px;
             padding-right:10px;
             font-size: 11px;
@@ -142,8 +146,82 @@ a{
             padding-right:10px;
         }
     }
+
+    li:nth-child(2), li:nth-child(3), li:nth-child(4){
+        border-bottom: 2px solid #FEBE23;
+        div:first-child{
+            color: rgb(163, 117, 8) !important;
+        }
+    }
+    
+    li:nth-child(5), li:nth-child(6){
+        border-bottom: 2px solid #86B24C;
+        div:first-child{
+            color: #86B24C !important;
+        }
+    }
     
     
+    .member{
+        font-size: 14px;
+        padding: 15px 0;
+        text-align: left;
+        a{
+            cursor: pointer;
+        }
+
+        div:first-child{
+            font-weight: bold;
+        }
+        div:last-child{
+            font-weight: bold;
+        }
+    }
+
+    .title{
+        font-size: 11px;
+        padding: 5px 0;
+    }
+
+    .total{
+        font-size: 15px;
+        font-weight: bold;
+        padding: 12px 0;
+        background:#ccc;
+    }
+}
+.mysteps{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+
+    li{
+        flex-wrap: nowrap;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 1px solid #eef1f8;
+        align-items: center;
+        
+        div:first-child{
+            width: 100%;
+            padding-left:10px;
+            text-align: left;
+        }
+
+        div:nth-child(2){
+            min-width: 150px;
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        div:last-child{
+            min-width: 50px;
+            padding-right:10px;
+            font-size: 11px;
+            text-align: right;
+        }
+    }
+
     .member{
         font-size: 14px;
         padding: 15px 0;
@@ -183,11 +261,12 @@ a{
 // Custom CSS
 
 .nav li a{
-    background-color:#f47e47 !important;
+    background-color:#e4e4e4 !important;
     border-radius: 0px !important;
     color: black;
+    padding: 15px 0 !important;
 }
 
 .nav li .active{
-    background-color:#fff !important;
+    background-color:#f47e47 !important;
 }

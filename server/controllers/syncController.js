@@ -5,7 +5,8 @@ const constants = require('../constants');
 let syncSteps = require("../syncSteps");
 
 module.exports.syncSteps = (req, res) => {
-    let playerGmail = req.query.gmail;
+    let playerGmail = req.headers.gmail;
+    console.log("In sync header");
     //console.log(req.headers.authorization)
 
     // if(!syncDate || !steps || !playerGmail) {

@@ -1,4 +1,4 @@
-<div class="container col-md-4">
+<div>
 <ngb-tabset justify="fill">
     <ngb-tab>
         <ng-template ngbTabTitle>
@@ -13,6 +13,7 @@
             <i class="icon-group"></i> Leaderboard
         </ng-template>
         <ng-template ngbTabContent>
+            <div class="pagetitle">Team</div>
             <ul class="leaderboard">
                 <li class="title">
                     <div>#</div>
@@ -35,7 +36,8 @@
             <i class="icon-male"></i>
         </ng-template>
         <ng-template ngbTabContent>
-            <ul class="leaderboard">
+            <div class="pagetitle">Individual Male</div>
+            <ul class="teammates">
                 <li class="title">
                     <div>#</div>
                     <div>Name</div>
@@ -57,7 +59,8 @@
             <i class="icon-female"></i>
         </ng-template>
         <ng-template ngbTabContent>
-            <ul class="leaderboard">
+            <div class="pagetitle">Individual Female</div>
+            <ul class="teammates">
                 <li class="title">
                     <div>#</div>
                     <div>Name</div>
