@@ -66,4 +66,30 @@ Submit a pull request with the new feature
 
 ### Deployment guidelines
 
-... TODO: Fill this after Dockerfiles 
+Login to your vm or machine via `ssh`
+
+```
+$ ssh -i <key-file>.pem <username>@<domain>
+```
+
+Remove existing directory and get a clone from deployment repository
+
+```
+$ sudo rm -rf <repo-name>
+$ git clone <repo-url>
+```
+
+Create containers 
+
+```
+$ cd <repo-name>
+$ docker-compose up --build -d
+```
+### Initialize db from data.csv
+if you are using external mongodb service directly execute `intialize.sh` from the host. Otherwise(If you are using dockerized mongo instance), Log in to the container and execute `initialize.sh` 
+
+```
+$ docker exec -it <server_container> /bin/bash -d
+$ cd data
+$ ./initialize.sh
+```
