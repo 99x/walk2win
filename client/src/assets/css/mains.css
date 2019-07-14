@@ -59,14 +59,6 @@ a {
   color: #86B24C !important;
 }
 
-.leaderboard li:nth-child(7), .leaderboard li:nth-child(8), .leaderboard li:nth-child(9), .leaderboard li:nth-child(10), .leaderboard li:nth-child(11) {
-  border-bottom: 2px solid #93acf2;
-}
-
-.leaderboard li:nth-child(7) div:first-child, .leaderboard li:nth-child(8) div:first-child, .leaderboard li:nth-child(9) div:first-child, .leaderboard li:nth-child(10) div:first-child, .leaderboard li:nth-child(11) div:first-child {
-  color: #93acf2 !important;
-}
-
 .leaderboard li {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -146,11 +138,15 @@ a {
 }
 
 .teammates li div:first-child {
-  width: 100%;
+  min-width: 40px;
   padding-left: 10px;
 }
 
 .teammates li div:nth-child(2) {
+  width: 100%;
+}
+
+.teammates li div:nth-child(3) {
   max-width: 150px;
   padding-right: 10px;
   font-size: 11px;
@@ -159,6 +155,22 @@ a {
 .teammates li div:last-child {
   max-width: 180px;
   padding-right: 10px;
+}
+
+.teammates li:nth-child(2), .teammates li:nth-child(3), .teammates li:nth-child(4) {
+  border-bottom: 2px solid #FEBE23;
+}
+
+.teammates li:nth-child(2) div:first-child, .teammates li:nth-child(3) div:first-child, .teammates li:nth-child(4) div:first-child {
+  color: #a37508 !important;
+}
+
+.teammates li:nth-child(5), .teammates li:nth-child(6) {
+  border-bottom: 2px solid #86B24C;
+}
+
+.teammates li:nth-child(5) div:first-child, .teammates li:nth-child(6) div:first-child {
+  color: #86B24C !important;
 }
 
 .teammates .member {
@@ -191,23 +203,89 @@ a {
   background: #ccc;
 }
 
+.mysteps {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.mysteps li {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-bottom: 1px solid #eef1f8;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mysteps li div:first-child {
+  width: 100%;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.mysteps li div:nth-child(2) {
+  min-width: 150px;
+  text-align: right;
+  padding-right: 16px;
+}
+
+.mysteps li div:last-child {
+  min-width: 50px;
+  padding-right: 10px;
+  font-size: 11px;
+  text-align: right;
+}
+
+.mysteps .member {
+  font-size: 14px;
+  padding: 15px 0;
+  text-align: left;
+}
+
+.mysteps .member a {
+  cursor: pointer;
+}
+
+.mysteps .member div:first-child {
+  font-weight: bold;
+}
+
+.mysteps .member div:last-child {
+  font-weight: bold;
+}
+
+.mysteps .title {
+  font-size: 11px;
+  padding: 5px 0;
+}
+
+.mysteps .total {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px 0;
+  background: #ccc;
+}
+
 .launch {
   text-align: center;
   padding: 50px 5px;
 }
 
-.connect {
-  text-align: center;
-  padding: 10px;
-}
-
 .nav li a {
-  background-color: #f47e47 !important;
+  background-color: #e4e4e4 !important;
   border-radius: 0px !important;
   color: black;
+  padding: 15px 0 !important;
 }
 
 .nav li .active {
-  background-color: #fff !important;
+  background-color: #f47e47 !important;
 }
 /*# sourceMappingURL=mains.css.map */
