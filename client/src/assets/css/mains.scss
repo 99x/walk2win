@@ -269,4 +269,22 @@ a{
 
 .nav li .active{
     background-color:#f47e47 !important;
+    color: #fff !important;
+    border:0px;
+    border-bottom: 2px solid #f47e47 !important;
+}
+
+.nav-fill .nav-item{
+    cursor: pointer !important;
+}
+
+.nav li {
+    i{
+        font-size: 22px;
+    }
+}
+
+.appcontainer{
+    max-width: 600px;
+    margin: 0 auto;
 }

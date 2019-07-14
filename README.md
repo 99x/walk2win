@@ -21,7 +21,7 @@
 - `GET /api/v1/leaderboard/topplayers`
 - `GET /api/v1/leaderboard/topmaleplayers`
 - `GET /api/v1/leaderboard/topfemaleplayers`
-- `POST /api/v1/sync` TODO - add post body
+- `GET /api/v1/sync`
 
 ### Developer Setup
 
