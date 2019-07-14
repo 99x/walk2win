@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
+import { SharedConstants } from 'src/app/constants/shared.constants';
+import { CookieService } from 'src/app/services/cookie.service';
 
 @Component({
 	selector: 'app-sync',
@@ -11,18 +13,31 @@ export class SyncComponent implements OnInit {
 	private isStepsCounted = false;
 	private stepCounts = [];
 	private totalStepCount = 0;
+	private googleAuthUrl = SharedConstants.GoogleAuthUrl;
+	private tempMessage = '';
 
 	public getGmail(): string {
-		return localStorage.getItem('gmail');
+		if (localStorage.getItem('gmail')) {
+			return localStorage.getItem('gmail');
+		}
+		return null;
 	}
 
 	constructor(
 		private ngZone: NgZone,
 		private googleFitService: GoogleFitService,
-		private dataService: DataService
+		private dataService: DataService,
+		private cookieService: CookieService
 	) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		console.log('oninit');
+		if (this.cookieService.getCookie('access_token') && this.cookieService.getCookie('gmail')) {
+			console.log('set localstorage vals');
+			localStorage.setItem('googleoauth', this.cookieService.getCookie('access_token'));
+			localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
+		}
+	}
 
 	signIn() {
 		if (!localStorage.getItem('googleoauth')) {
@@ -41,11 +56,20 @@ export class SyncComponent implements OnInit {
 	}
 
 	getSyncData() {
-		const syncDataUrl = `/api/v1/sync?gmail=${this.getGmail()}`;
+		const syncDataUrl = `/api/v1/sync`;
 
 		this.dataService.getSyncData(syncDataUrl).subscribe(
 			(res: any) => {
-				console.log(res);
+				if (res.tokenRefreshed) {
+					console.log('refreshed token');
+					localStorage.setItem('googleoauth', res.token);
+					this.cookieService.createCookie('access_token', res.token, 30);
+					this.getSyncData();
+				}
+				console.log('response--', res);
+				if (res.message) {
+					this.tempMessage = res.message;
+				}
 			},
 			err => {
 				console.log(err);
@@ -71,7 +95,7 @@ export class SyncComponent implements OnInit {
 					});
 					this.totalStepCount = this.stepCounts.reduce((total, current) =>
 						total + current.stepsPerDay
-						, 0)
+						, 0);
 					this.isStepsCounted = true;
 				});
 			},

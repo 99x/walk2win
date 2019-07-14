@@ -12,11 +12,13 @@ import { SyncComponent } from './components/sync/sync.component';
 
 import { GoogleFitService } from './services/google-fit.service';
 import { DataService } from './services/data.service';
+import { CookieService } from './services/cookie.service';
+
 import { SharedConstants } from './constants/shared.constants';
 
 @NgModule({
 	declarations: [AppComponent, SyncComponent, TeamLeaderboardComponent],
-	providers: [GoogleFitService, DataService, SharedConstants],
+	providers: [GoogleFitService, DataService, CookieService, SharedConstants],
 	imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, NgbModule],
 	bootstrap: [AppComponent]
 })

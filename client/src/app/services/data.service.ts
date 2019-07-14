@@ -11,7 +11,8 @@ export class DataService {
 	private buildHttpOptions(): any {
 		return {
 			headers: new HttpHeaders({
-				Authorization: this.createBearerToken()
+				Authorization: this.createBearerToken(),
+				gmail: decodeURIComponent(localStorage.getItem('gmail'))
 			})
 		};
 	}

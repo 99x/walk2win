@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SharedConstants {
 	public static GoogleAuth = 'client:auth2';
-
+	public static GoogleAuthUrl = 'http://localhost:3003/api/v1/auth/google';
 	public static GoogleFitnessApiScope = 'https://www.googleapis.com/auth/fitness.activity.read';
 	public static GoogleFitnessApiUrl = 'https://content.googleapis.com/discovery/v1/apis/fitness/v1/rest';
 	public static GoogleFitDataTypeName = 'com.google.step_count.delta';

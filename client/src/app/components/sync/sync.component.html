@@ -1,17 +1,21 @@
 <div class="connect">
 
-
-
-    <div class="connect-container" *ngIf="true">
+    <div class="connect-container">
         <div class="Logo"><img src="./assets/img/w2w-logo.png" width="220"></div>
-
-        <span class="btn btn-primary" (click)="signIn()"><i class="icon-google"></i> Connect GoogleFit</span>
+        <div *ngIf="!getGmail()">
+            <a href="{{googleAuthUrl}}"><span class="btn btn-primary"><i class="icon-google"></i>
+                    Connect GoogleFit</span></a>
+        </div>
     </div>
 
-    <div class="connect-container" *ngIf="true">
-        <!-- <div *ngIf="tempMessage">{{tempMessage + ' '+ getGmail()}}</div> -->
+    <div class="connect-container" *ngIf="getGmail()">
         <span (click)="getSyncData()" class="btn btn-primary">
             <i class="icon-sync"></i> Sync</span>
+        <br />
+        <br />
+        <span *ngIf="tempMessage && tempMessage?.length">
+            {{tempMessage}}
+        </span>
     </div>
 
 
