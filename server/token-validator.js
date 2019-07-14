@@ -16,6 +16,17 @@ exports.checkToken = (req, res, next) => {
   if(!req.headers.authorization) {
     res.json({
       error: true,
+      tokenRefreshed: false,
+      message: "Authorization header not found",
+      loginRedirect: true
+    });
+    return;
+    // return next("Auth header not found", null);
+  }
+  if(!req.headers.gmail) {
+    res.json({
+      error: true,
+      tokenRefreshed: false,
       message: "Authorization header not found",
       loginRedirect: true
     });
@@ -42,6 +53,7 @@ exports.checkToken = (req, res, next) => {
         return res.json({
           error: true,
           message: "Player not found, please login",
+          tokenRefreshed: false,
           loginRedirect: true
         });
     }
@@ -57,6 +69,7 @@ exports.checkToken = (req, res, next) => {
     if (
         expSecs > -300
     ) {
+      console.log("Refreshing access token");
       // set the current users access and refresh token
       oauth2Client.setCredentials({
         access_token: player.accessToken,
@@ -80,7 +93,11 @@ exports.checkToken = (req, res, next) => {
           },
           function(err, doc) {
             if (err) return next(err);
-            next();
+            return res.json({
+              error: false,
+              tokenRefreshed: true,
+              token: tokens.access_token
+            });
           }
         );
       });
