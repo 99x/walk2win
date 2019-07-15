@@ -83,13 +83,13 @@ Create containers
 
 ```
 $ cd <repo-name>
-$ docker-compose up --build -d
+$ sudo docker-compose up --build -d
 ```
 ### Initialize db from data.csv
 if you are using external mongodb service directly execute `intialize.sh` from the host. Otherwise(If you are using dockerized mongo instance), Log in to the container and execute `initialize.sh` 
 
 ```
-$ docker exec -it <server_container> /bin/bash -d
+$ sudo docker exec -it --user=root <container_id> /bin/bash -d
 $ cd data
 $ ./initialize.sh
 ```
