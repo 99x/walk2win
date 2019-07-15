@@ -25,9 +25,10 @@ let insertToMongo = async (results) => {
     for(let row of results) {
         if(row['Participating as'] == 'Individual') {
             console.log('Inserting solo player');
+            let gender = row['Gender'][0] == 'M' ? 'male' : 'female';
             await Player.collection.insertOne({
                 team: null,
-                gender: 'male',
+                gender: gender,
                 points: 0,
                 steps: 0,
                 name: row['Name'],
@@ -42,6 +43,7 @@ let insertToMongo = async (results) => {
                 points: 0
             };
             let resp = await Team.collection.insertOne(teamModel);
+            let genders = row['Gender'].split(' ');
             for(let i = 1; i <= 4; i++) {
                 let nameKey = 'Member {N} Name{A}';
                 let emailKey = 'Member {N} Email{A}';
@@ -63,7 +65,7 @@ let insertToMongo = async (results) => {
 
                 await Player.collection.insertOne({
                     team: resp.insertedId,
-                    gender: i == 2 ? 'female' : 'male',
+                    gender: genders[i - 1] == 'F' ? 'female' : 'male',
                     points: 0,
                     steps: 0,
                     name: row[nameKey],
