@@ -31,9 +31,7 @@ export class SyncComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		console.log('oninit');
 		if (this.cookieService.getCookie('access_token') && this.cookieService.getCookie('gmail')) {
-			console.log('set localstorage vals');
 			localStorage.setItem('googleoauth', this.cookieService.getCookie('access_token'));
 			localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
 		}
@@ -61,12 +59,12 @@ export class SyncComponent implements OnInit {
 		this.dataService.getSyncData(syncDataUrl).subscribe(
 			(res: any) => {
 				if (res.tokenRefreshed) {
-					console.log('refreshed token');
+					console.log('token refreshed');
 					localStorage.setItem('googleoauth', res.token);
 					this.cookieService.createCookie('access_token', res.token, 30);
 					this.getSyncData();
 				}
-				console.log('response--', res);
+				console.log(res);
 				if (res.message) {
 					this.tempMessage = res.message;
 				}
