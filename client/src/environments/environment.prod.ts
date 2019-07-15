@@ -1,6 +1,6 @@
 export const environment = {
 	production: true,
-	baseApi: 'http://localhost:3003',
+	baseApi: 'http://18.217.150.97',
 	client_id: 'YOUR_CLIENT_ID',
 	apiKey: 'YOUR_API_KEY'
 };
