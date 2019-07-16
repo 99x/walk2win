@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TeamLeaderboardComponent } from './components/team-leaderboard/team-leaderboard.component';
 import { SyncComponent } from './components/sync/sync.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { RulesAndRegulationsComponent } from './components/rules-and-regulations/rules-and-regulations.component';
+import { PointsTableComponent } from './components/points-table/points-table.component';
 
 const routes: Routes = [
 	{
@@ -12,6 +15,18 @@ const routes: Routes = [
 	{
 		path: 'sync',
 		component: SyncComponent
+	},
+	{
+		path: 'privacy',
+		component: PrivacyComponent
+	},
+	{
+		path: 'rules',
+		component: RulesAndRegulationsComponent
+	},
+	{
+		path: 'point',
+		component: PointsTableComponent
 	}
 ];
 

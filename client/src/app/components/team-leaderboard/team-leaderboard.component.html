@@ -1,80 +1,81 @@
 <div class="appcontainer">
-<ngb-tabset justify="fill">
-    <ngb-tab>
-        <ng-template ngbTabTitle>
-            <i class="icon-user"></i>
-        </ng-template>
-        <ng-template ngbTabContent>
-            <app-sync></app-sync>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab>
-        <ng-template ngbTabTitle>
-            <i class="icon-group"></i>
-        </ng-template>
-        <ng-template ngbTabContent>
-            <div class="pagetitle">Teams leaderboard</div>
-            <ul class="leaderboard">
-                <li class="title">
-                    <div>#</div>
-                    <div>Team Name</div>
-                    <div>Steps</div>
-                    <div>Points</div>
-                </li>
-                <li class="team" *ngFor="let team of teams; let i = index">
-                    <div>{{ (i + 1) | number : '2.' }}</div>
-                    <div><a href="#">{{ team.name }}</a></div>
-                    <div>{{ team.steps | number : '2.' }}</div>
-                    <div>{{ team.points | number : '2.' }}</div>
-                </li>
-            </ul>
-        </ng-template>
-    </ngb-tab>
+    <ngb-tabset justify="fill">
+        <ngb-tab>
+            <ng-template ngbTabTitle>
+                <i class="icon-user"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <app-sync></app-sync>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+            <ng-template ngbTabTitle>
+                <i class="icon-group"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <div class="pagetitle">Teams leaderboard</div>
+                <ul class="leaderboard">
+                    <li class="title">
+                        <div>#</div>
+                        <div>Team Name</div>
+                        <div>Steps</div>
+                        <div>Points</div>
+                    </li>
+                    <li class="team" *ngFor="let team of teams; let i = index">
+                        <div>{{ (i + 1) | number : '2.' }}</div>
+                        <div><a href="#">{{ team.name }}</a></div>
+                        <div>{{ team.steps | number : '2.' }}</div>
+                        <div>{{ team.points | number : '2.' }}</div>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-tab>
 
-    <ngb-tab>
-        <ng-template ngbTabTitle>
-            <i class="icon-male"></i>
-        </ng-template>
-        <ng-template ngbTabContent>
-            <div class="pagetitle"><span class="small">Individual</span> Male</div>
-            <ul class="teammates">
-                <li class="title">
-                    <div>#</div>
-                    <div>Name</div>
-                    <div>Steps</div>
-                    <div>Points</div>
-                </li>
-                <li class="team" *ngFor="let player of malePlayers; let i = index">
-                    <div>{{ (i + 1) | number : '2.' }}</div>
-                    <div><a href="#">{{ player.name }}</a></div>
-                    <div>{{ player.steps | number : '2.' }}</div>
-                    <div>{{ player.points | number : '2.' }}</div>
-                </li>
-            </ul>
-        </ng-template>
-    </ngb-tab>
+        <ngb-tab>
+            <ng-template ngbTabTitle>
+                <i class="icon-male"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <div class="pagetitle"><span class="small">Individual</span> Male</div>
+                <ul class="teammates">
+                    <li class="title">
+                        <div>#</div>
+                        <div>Name</div>
+                        <div>Steps</div>
+                        <div>Points</div>
+                    </li>
+                    <li class="team" *ngFor="let player of malePlayers; let i = index">
+                        <div>{{ (i + 1) | number : '2.' }}</div>
+                        <div><a href="#">{{ player.name }}</a></div>
+                        <div>{{ player.steps | number : '2.' }}</div>
+                        <div>{{ player.points | number : '2.' }}</div>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-tab>
 
-    <ngb-tab>
-        <ng-template ngbTabTitle>
-            <i class="icon-female"></i>
-        </ng-template>
-        <ng-template ngbTabContent>
-            <div class="pagetitle"><span class="small">Individual</span> Female</div>
-            <ul class="teammates">
-                <li class="title">
-                    <div>#</div>
-                    <div>Name</div>
-                    <div>Steps</div>
-                    <div>Points</div>
-                </li>
-                <li class="team" *ngFor="let player of femalePlayers; let i = index">
-                    <div>{{ (i + 1) | number : '2.' }}</div>
-                    <div><a href="#">{{ player.name }}</a></div>
-                    <div>{{ player.steps | number : '2.' }}</div>
-                    <div>{{ player.points | number : '2.' }}</div>
-                </li>
-            </ul>
-        </ng-template>
-    </ngb-tab>
-</ngb-tabset>
+        <ngb-tab>
+            <ng-template ngbTabTitle>
+                <i class="icon-female"></i>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <div class="pagetitle"><span class="small">Individual</span> Female</div>
+                <ul class="teammates">
+                    <li class="title">
+                        <div>#</div>
+                        <div>Name</div>
+                        <div>Steps</div>
+                        <div>Points</div>
+                    </li>
+                    <li class="team" *ngFor="let player of femalePlayers; let i = index">
+                        <div>{{ (i + 1) | number : '2.' }}</div>
+                        <div><a href="#">{{ player.name }}</a></div>
+                        <div>{{ player.steps | number : '2.' }}</div>
+                        <div>{{ player.points | number : '2.' }}</div>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+   
 </div>
