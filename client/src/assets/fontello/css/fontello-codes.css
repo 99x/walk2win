@@ -9,6 +9,13 @@
 .icon-left-thin:before { content: '\e807'; } /* '' */
 .icon-sync:before { content: '\e808'; } /* '' */
 .icon-crown:before { content: '\e844'; } /* '' */
+.icon-trophy:before { content: '\e91c'; } /* '' */
+.icon-angle-left:before { content: '\f104'; } /* '' */
+.icon-angle-right:before { content: '\f105'; } /* '' */
+.icon-angle-up:before { content: '\f106'; } /* '' */
+.icon-angle-down:before { content: '\f107'; } /* '' */
+.icon-left:before { content: '\f177'; } /* '' */
+.icon-right:before { content: '\f178'; } /* '' */
 .icon-female:before { content: '\f182'; } /* '' */
 .icon-male:before { content: '\f183'; } /* '' */
 .icon-google:before { content: '\f1a0'; } /* '' */
