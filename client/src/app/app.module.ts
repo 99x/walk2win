@@ -16,12 +16,28 @@ import { CookieService } from './services/cookie.service';
 
 import { SharedConstants } from './constants/shared.constants';
 import { PrivacyComponent } from './components/privacy/privacy.component';
-import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
+import { PointsTableComponent } from './components/points-table/points-table.component';
+import { RulesAndRegulationsComponent } from './components/rules-and-regulations/rules-and-regulations.component';
 
 @NgModule({
-	declarations: [AppComponent, SyncComponent, TeamLeaderboardComponent, PrivacyComponent, TermsOfServiceComponent],
-	providers: [GoogleFitService, DataService, CookieService, SharedConstants],
-	imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, NgbModule],
+	declarations: [
+		AppComponent,
+		SyncComponent,
+		TeamLeaderboardComponent,
+		PrivacyComponent,
+		PointsTableComponent,
+		RulesAndRegulationsComponent],
+	providers: [
+		GoogleFitService,
+		DataService,
+		CookieService,
+		SharedConstants],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpClientModule,
+		AppRoutingModule,
+		NgbModule],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

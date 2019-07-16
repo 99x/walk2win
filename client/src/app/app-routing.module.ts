@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TeamLeaderboardComponent } from './components/team-leaderboard/team-leaderboard.component';
 import { SyncComponent } from './components/sync/sync.component';
-import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { RulesAndRegulationsComponent } from './components/rules-and-regulations/rules-and-regulations.component';
+import { PointsTableComponent } from './components/points-table/points-table.component';
 
 const routes: Routes = [
 	{
@@ -16,12 +17,16 @@ const routes: Routes = [
 		component: SyncComponent
 	},
 	{
-		path: 'terms',
-		component: TermsOfServiceComponent
-	},
-	{
 		path: 'privacy',
 		component: PrivacyComponent
+	},
+	{
+		path: 'rules',
+		component: RulesAndRegulationsComponent
+	},
+	{
+		path: 'point',
+		component: PointsTableComponent
 	}
 ];
 
