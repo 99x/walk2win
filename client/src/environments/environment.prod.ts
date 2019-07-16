@@ -1,6 +1,6 @@
 export const environment = {
 	production: true,
-	baseApi: 'http://d32d2ytfhn26li.cloudfront.net/',
+	baseApi: 'http://18.218.3.5',
 	client_id: 'YOUR_CLIENT_ID',
 	apiKey: 'YOUR_API_KEY'
 };
