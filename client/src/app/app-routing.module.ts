@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TeamLeaderboardComponent } from './components/team-leaderboard/team-leaderboard.component';
 import { SyncComponent } from './components/sync/sync.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 const routes: Routes = [
 	{
@@ -12,6 +14,14 @@ const routes: Routes = [
 	{
 		path: 'sync',
 		component: SyncComponent
+	},
+	{
+		path: 'terms',
+		component: TermsOfServiceComponent
+	},
+	{
+		path: 'privacy',
+		component: PrivacyComponent
 	}
 ];
 

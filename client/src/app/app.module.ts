@@ -15,9 +15,11 @@ import { DataService } from './services/data.service';
 import { CookieService } from './services/cookie.service';
 
 import { SharedConstants } from './constants/shared.constants';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 
 @NgModule({
-	declarations: [AppComponent, SyncComponent, TeamLeaderboardComponent],
+	declarations: [AppComponent, SyncComponent, TeamLeaderboardComponent, PrivacyComponent, TermsOfServiceComponent],
 	providers: [GoogleFitService, DataService, CookieService, SharedConstants],
 	imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, NgbModule],
 	bootstrap: [AppComponent]
