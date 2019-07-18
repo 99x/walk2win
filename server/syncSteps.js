@@ -43,6 +43,9 @@ module.exports = async function (accessToken, refreshToken) {
             endTimeMillis: dayEnd
         }
     });
-    
-    return res.data.bucket[0].dataset[0].point[0].value[0].intVal;
+
+    if (res.data.bucket[0].dataset[0].point[0])
+        return res.data.bucket[0].dataset[0].point[0].value[0].intVal
+
+    return 0;
 }

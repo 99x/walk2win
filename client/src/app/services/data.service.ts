@@ -39,7 +39,7 @@ export class DataService {
 	 * @param url the api endpoint url to be called
 	 */
 	public getTeamsLeaderboardValues(url: string) {
-		return from(this.http.get(this.createUrl(url)));
+		return from(this.http.get(this.createUrl(url), this.buildHttpOptions()));
 	}
 
 }

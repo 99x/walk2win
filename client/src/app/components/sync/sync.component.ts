@@ -3,6 +3,7 @@ import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
 import { SharedConstants } from 'src/app/constants/shared.constants';
 import { CookieService } from 'src/app/services/cookie.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
 	selector: 'app-sync',
@@ -13,7 +14,7 @@ export class SyncComponent implements OnInit {
 	private isStepsCounted = false;
 	private stepCounts = [];
 	private totalStepCount = 0;
-	private googleAuthUrl = SharedConstants.GoogleAuthUrl;
+	public googleAuthUrl = environment.googleAuthUrl;
 	private tempMessage = '';
 
 	public getGmail(): string {
