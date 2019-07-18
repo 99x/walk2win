@@ -3,6 +3,7 @@ let Player = require("../models/player");
 let SyncRecord = require("../models/syncrecord");
 const constants = require("../constants");
 let syncSteps = require("../syncSteps");
+let pointCalc = require("../helpers/pointCalculator");
 
 module.exports.syncSteps = (req, res) => {
   let playerGmail = req.headers.gmail;
@@ -20,6 +21,7 @@ module.exports.syncSteps = (req, res) => {
   Player.find({ gmail: playerGmail }, async (err, resp) => {
     if (err) throw err;
     if (resp.length > 0) {
+      const playerId = resp[0]._id;
       const todaySteps = await syncSteps(
         resp[0].accessToken,
         resp[0].refreshToken
@@ -67,11 +69,14 @@ module.exports.syncSteps = (req, res) => {
         //dd.setHours(0, 0, 0, 0);
         console.log("Here", utcDate);
 
+        let todayScore = pointCalc.calculatePoints(todaySteps);
+
         Player.findOneAndUpdate(
           { gmail: playerGmail, "total_steps.date": new Date(utcDate) },
           {
             $set: {
               "total_steps.$.steps": todaySteps,
+              "total_steps.$.points": todayScore,
               "total_steps.$.date": new Date(utcDate)
             }
           },
@@ -82,12 +87,14 @@ module.exports.syncSteps = (req, res) => {
                 { gmail: playerGmail },
                 {
                   $push: {
-                    total_steps: { date: utcDate, steps: todaySteps }
+                    total_steps: { date: utcDate, steps: todaySteps, points: todayScore }
                   }
                 },
                 (errNewSteps,
                 newSteps => {
                   if (errNewSteps) next(errNewSteps);
+
+                  pointCalc.calculateTotals(playerId);
 
                   return res.json({
                     error: false,
@@ -97,6 +104,8 @@ module.exports.syncSteps = (req, res) => {
                 })
               );
             }
+
+            pointCalc.calculateTotals(playerId);
 
             return res.json({
               error: false,
