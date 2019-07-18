@@ -1,6 +1,6 @@
 <div class="connect">
 
-    <div class="connect-container" *ngIf="false">
+    <div class="connect-container" *ngIf="true">
         <div class="Logo"><img src="./assets/img/w2w-logo.png" width="220"></div>
         <div *ngIf="!getGmail()">
             <a href="{{googleAuthUrl}}"><span class="btn btn-primary"><i class="icon-google"></i>
@@ -32,11 +32,11 @@
                 <div>{{ step.points }}</div>
             </li>
 
-            <li class="member total">
+            <!-- <li class="member total">
                 <div>Total</div>
                 <div>10000</div>
                 <div>350</div>
-            </li>
+            </li> -->
         </ul>
     </div>
 

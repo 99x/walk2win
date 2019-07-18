@@ -42,4 +42,8 @@ export class TeamLeaderboardComponent implements OnInit {
 		});
 	}
 
+	private getTeamList(teamName: string) {
+		console.log("getteamlist", teamName)
+	}
+
 }

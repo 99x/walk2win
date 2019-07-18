@@ -3,7 +3,7 @@ import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
 import { SharedConstants } from 'src/app/constants/shared.constants';
 import { CookieService } from 'src/app/services/cookie.service';
-import {environment} from "src/environments/environment.prod";
+import { environment } from "src/environments/environment.prod";
 
 @Component({
 	selector: 'app-sync',
@@ -77,8 +77,8 @@ export class SyncComponent implements OnInit {
 			});
 	}
 
-	getPlayerScore(){
-		const playerSyncDataUrl = `/api/v1/playersync`; 
+	getPlayerScore() {
+		const playerSyncDataUrl = `/api/v1/playersync`;
 		// this.stepCounts = [{
 		// 	steps: 12,
 		// 	date: '12/12/2018',
@@ -95,6 +95,7 @@ export class SyncComponent implements OnInit {
 		this.dataService.getPlayerScore(playerSyncDataUrl).subscribe(
 			(res: any) => {
 				console.log(res);
+				this.stepCounts = res;
 				// this.stepCounts = [{
 				// 	steps: 12,
 				// 	date: '12/12/2018',

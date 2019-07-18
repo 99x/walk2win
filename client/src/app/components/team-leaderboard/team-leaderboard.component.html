@@ -23,7 +23,7 @@
                     </li>
                     <li class="team" *ngFor="let team of teams; let i = index">
                         <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div><a href="#">{{ team.name | titlecase }}</a></div>
+                        <div><a href="" (click)="getTeamList(team.name)">{{ team.name | titlecase }}</a></div>
                         <div>{{ team.steps | number : '2.' }}</div>
                         <div>{{ team.points | number : '2.' }}</div>
                     </li>
