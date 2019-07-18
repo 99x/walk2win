@@ -1,4 +1,5 @@
 let marks = require('../constants');
+let Player = require('../models/player');
 
 let calculatePoints = (options) => {
     let steps = options.steps;
@@ -27,6 +28,14 @@ let calculatePoints = (options) => {
     return points;
 };
 
+let calculateTotals = (id) => {
+    Player.findById(id, (error, player) => {
+        if(error) return;
+        let totalPoints = player.total_steps.reduce((a, b) => (a + b.points), 0);
+        let totalSteps = player.total_steps.reduce((a, b) => (a + b.steps), 0);
+        Player.updateOne({_id: id}, {points: totalPoints, steps: totalSteps}, () => {});
+    });
+}
 
 /* 
 console.log(calculatePoints({
@@ -34,4 +43,7 @@ console.log(calculatePoints({
     type: 'solo'
 })); */
 
-module.exports.calculatePoints = calculatePoints;
+module.exports = {
+    calculatePoints: calculatePoints,
+    calculateTotals: calculateTotals
+};
