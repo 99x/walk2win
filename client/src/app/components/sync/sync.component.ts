@@ -12,7 +12,7 @@ import { environment } from "src/environments/environment.prod";
 })
 export class SyncComponent implements OnInit {
 	private isStepsCounted = false;
-	private stepCounts = [];
+	public stepCounts = [];
 	private totalStepCount = 0;
 	private googleAuthUrl = environment.googleAuthUrl;
 	private tempMessage = '';
