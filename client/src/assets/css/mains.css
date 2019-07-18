@@ -44,19 +44,19 @@ a {
 }
 
 .leaderboard li:nth-child(2), .leaderboard li:nth-child(3), .leaderboard li:nth-child(4) {
-  border-bottom: 2px solid #FEBE23;
+  border-bottom: 2px solid #43c72b;
 }
 
 .leaderboard li:nth-child(2) div:first-child, .leaderboard li:nth-child(3) div:first-child, .leaderboard li:nth-child(4) div:first-child {
-  color: #a37508 !important;
+  color: #268615 !important;
 }
 
 .leaderboard li:nth-child(5), .leaderboard li:nth-child(6) {
-  border-bottom: 2px solid #86B24C;
+  border-bottom: 2px solid #3078e4;
 }
 
 .leaderboard li:nth-child(5) div:first-child, .leaderboard li:nth-child(6) div:first-child {
-  color: #86B24C !important;
+  color: #2262c1 !important;
 }
 
 .leaderboard li {
@@ -90,8 +90,9 @@ a {
 }
 
 .leaderboard li div:last-child {
-  max-width: 180px;
+  width: 100px;
   padding-right: 10px;
+  text-align: right;
 }
 
 .leaderboard .team {
@@ -114,6 +115,10 @@ a {
 .leaderboard .title {
   font-size: 11px;
   padding: 5px 0;
+}
+
+.leaderboard .title div:last-child {
+  text-align: right;
 }
 
 .teammates {
@@ -153,8 +158,26 @@ a {
 }
 
 .teammates li div:last-child {
-  max-width: 180px;
+  width: 100px;
   padding-right: 10px;
+  text-align: right;
+}
+
+.teammates .team {
+  font-size: 14px;
+  padding: 15px 0;
+}
+
+.teammates .team a {
+  cursor: pointer;
+}
+
+.teammates .team div:first-child {
+  font-weight: bold;
+}
+
+.teammates .team div:last-child {
+  font-weight: bold;
 }
 
 .teammates li:nth-child(2), .teammates li:nth-child(3), .teammates li:nth-child(4) {
@@ -194,6 +217,10 @@ a {
 .teammates .title {
   font-size: 11px;
   padding: 5px 0;
+}
+
+.teammates .title div:last-child {
+  text-align: right;
 }
 
 .teammates .total {
@@ -266,6 +293,11 @@ a {
   padding: 5px 0;
 }
 
+.mysteps .title div:last-child {
+  font-weight: bold;
+  text-align: right;
+}
+
 .mysteps .total {
   font-size: 15px;
   font-weight: bold;
@@ -314,6 +346,10 @@ a {
 
 .topheader a {
   color: #fff !important;
+}
+
+.bonus {
+  font-weight: 700;
 }
 
 .titlesecondary {

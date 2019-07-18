@@ -23,7 +23,7 @@
                     </li>
                     <li class="team" *ngFor="let team of teams; let i = index">
                         <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div><a href="#">{{ team.name }}</a></div>
+                        <div><a href="#">{{ team.name | titlecase }}</a></div>
                         <div>{{ team.steps | number : '2.' }}</div>
                         <div>{{ team.points | number : '2.' }}</div>
                     </li>
@@ -46,7 +46,7 @@
                     </li>
                     <li class="team" *ngFor="let player of malePlayers; let i = index">
                         <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div><a href="#">{{ player.name }}</a></div>
+                        <div><a href="#">{{ player.name | titlecase }}</a></div>
                         <div>{{ player.steps | number : '2.' }}</div>
                         <div>{{ player.points | number : '2.' }}</div>
                     </li>
@@ -69,7 +69,7 @@
                     </li>
                     <li class="team" *ngFor="let player of femalePlayers; let i = index">
                         <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div><a href="#">{{ player.name }}</a></div>
+                        <div><a href="#">{{ player.name | titlecase}}</a></div>
                         <div>{{ player.steps | number : '2.' }}</div>
                         <div>{{ player.points | number : '2.' }}</div>
                     </li>
@@ -77,5 +77,5 @@
             </ng-template>
         </ngb-tab>
     </ngb-tabset>
-   
+
 </div>

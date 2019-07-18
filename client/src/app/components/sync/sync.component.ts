@@ -66,6 +66,7 @@ export class SyncComponent implements OnInit {
 				}
 				console.log(res);
 				if (res.message) {
+					this.isStepsCounted = true;
 					this.tempMessage = res.message;
 				}
 			},
