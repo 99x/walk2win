@@ -143,3 +143,29 @@ module.exports.syncSteps = (req, res) => {
 module.exports.authCb = function(req, res) {
   res.redirect("/");
 };
+
+
+module.exports.playerSync = function(req, res) {
+  let playerGmail = req.headers.gmail;
+  if(!playerGmail) {
+    res.json({
+      error: true,
+      message: 'gmail is not set'
+    });
+    return;
+  }
+  Player.findOne({gmail: playerGmail}, (error, player) => {
+    if(error) {
+      res.json(error);
+      return;
+    }
+    if(!player) {
+      res.json({
+        error: true,
+        message: 'player not found'
+      });
+      return;
+    }
+    res.json(player.total_steps.sort((a, b) => new Date(b.date) - new Date(a.date)));
+  });
+}
