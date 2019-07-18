@@ -3,6 +3,7 @@ import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
 import { SharedConstants } from 'src/app/constants/shared.constants';
 import { CookieService } from 'src/app/services/cookie.service';
+import {environment} from "src/environments/environment.prod";
 
 @Component({
 	selector: 'app-sync',
@@ -13,7 +14,7 @@ export class SyncComponent implements OnInit {
 	private isStepsCounted = false;
 	private stepCounts = [];
 	private totalStepCount = 0;
-	private googleAuthUrl = SharedConstants.GoogleAuthUrl;
+	private googleAuthUrl = environment.googleAuthUrl;
 	private tempMessage = '';
 
 	public getGmail(): string {
@@ -34,6 +35,7 @@ export class SyncComponent implements OnInit {
 		if (this.cookieService.getCookie('access_token') && this.cookieService.getCookie('gmail')) {
 			localStorage.setItem('googleoauth', this.cookieService.getCookie('access_token'));
 			localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
+			this.getPlayerScore();
 		}
 	}
 
@@ -69,6 +71,43 @@ export class SyncComponent implements OnInit {
 					this.isStepsCounted = true;
 					this.tempMessage = res.message;
 				}
+			},
+			err => {
+				console.log(err);
+			});
+	}
+
+	getPlayerScore(){
+		const playerSyncDataUrl = `/api/v1/playersync`; 
+		// this.stepCounts = [{
+		// 	steps: 12,
+		// 	date: '12/12/2018',
+		// 	points: 100
+		// },{
+		// 	steps: 14,
+		// 	date: '12/15/2018',
+		// 	points: 100
+		// },{
+		// 	steps: 17,
+		// 	date: '12/18/2018',
+		// 	points: 100
+		// }]
+		this.dataService.getPlayerScore(playerSyncDataUrl).subscribe(
+			(res: any) => {
+				console.log(res);
+				// this.stepCounts = [{
+				// 	steps: 12,
+				// 	date: '12/12/2018',
+				// 	points: 100
+				// },{
+				// 	steps: 14,
+				// 	date: '12/15/2018',
+				// 	points: 100
+				// },{
+				// 	steps: 17,
+				// 	date: '12/18/2018',
+				// 	points: 100
+				// }]
 			},
 			err => {
 				console.log(err);

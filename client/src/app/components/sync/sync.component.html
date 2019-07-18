@@ -1,6 +1,6 @@
 <div class="connect">
 
-    <div class="connect-container">
+    <div class="connect-container" *ngIf="false">
         <div class="Logo"><img src="./assets/img/w2w-logo.png" width="220"></div>
         <div *ngIf="!getGmail()">
             <a href="{{googleAuthUrl}}"><span class="btn btn-primary"><i class="icon-google"></i>
@@ -8,37 +8,33 @@
         </div>
     </div>
 
-    <div class="connect-container" *ngIf="getGmail()">
-        <span (click)="getSyncData()" class="btn btn-primary">
+    <div class="connect-container" *ngIf="true">
+        <span (click)="getPlayerScore()" class="btn btn-primary">
             <i class="icon-sync"></i> Sync</span>
         <br />
-        <br />
-        <span *ngIf="getGmail() && isStepsCounted">
-            Gmail - {{getGmail()}}
-        </span>
         <br />
         <span *ngIf="tempMessage && tempMessage?.length">
             {{tempMessage}}
         </span>
     </div>
 
-    <div *ngIf="false">
+    <div *ngIf="stepCounts">
         <div class="pagetitle">Your steps counts by date</div>
-        <ul *ngIf="isStepsCounted" class="mysteps">
+        <ul *ngIf="stepCounts" class="mysteps">
             <li class="title">
                 <div>Date</div>
                 <div>Steps</div>
                 <div>Points</div>
             </li>
             <li *ngFor="let step of stepCounts; let i = index" class="member">
-                <div>{{ step.dateSteps | date: 'fullDate' }}</div>
-                <div>{{ step.stepsPerDay }}</div>
-                <div>350</div>
+                <div>{{ step.date | date: 'fullDate' }}</div>
+                <div>{{ step.steps }}</div>
+                <div>{{ step.points }}</div>
             </li>
 
             <li class="member total">
                 <div>Total</div>
-                <div>{{ totalStepCount }}</div>
+                <div>10000</div>
                 <div>350</div>
             </li>
         </ul>

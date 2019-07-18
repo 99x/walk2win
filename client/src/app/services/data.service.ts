@@ -33,6 +33,14 @@ export class DataService {
 		return from(this.http.get(this.createUrl(url), this.buildHttpOptions()));
 	}
 
+	/**
+	 * Get player steps score data
+	 * @param url the api endpoint url to be called
+	 */
+	getPlayerScore(url: string) {
+		return from(this.http.get(this.createUrl(url), this.buildHttpOptions()));
+	}
+
 
 	/**
 	 * Get Team leaderboard values for male, female or individual
