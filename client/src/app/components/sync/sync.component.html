@@ -13,6 +13,10 @@
             <i class="icon-sync"></i> Sync</span>
         <br />
         <br />
+        <span *ngIf="getGmail() && isStepsCounted">
+            Gmail - {{getGmail()}}
+        </span>
+        <br />
         <span *ngIf="tempMessage && tempMessage?.length">
             {{tempMessage}}
         </span>
@@ -41,8 +45,9 @@
     </div>
 
     <div>
-        <br /> <hr />
-        <button type="button" [routerLink]="['/point']"  class="btn btn-warning">Earn bonus points</button>
+        <br />
+        <hr />
+        <button type="button" [routerLink]="['/point']" class="btn btn-warning">Earn bonus points</button>
         <br /> <br />
     </div>
 
