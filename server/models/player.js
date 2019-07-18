@@ -7,7 +7,8 @@ let playerSchema = new mongoose.Schema({
   total_steps: [
     {
       date: Date,
-      steps: Number
+      steps: Number,
+      points: Number,
     }
   ],
   points: Number,

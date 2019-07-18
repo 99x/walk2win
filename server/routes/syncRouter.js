@@ -8,5 +8,6 @@ router.get('/api/v1/auth/google', passport.authenticate('google', { accessType: 
 router.get('/api/v2', (req, res) => { res.json({ a : "sada" }) });
 //router.get('/api/v1/auth/google/callback', passport.authenticate('google', { failureRedirect: '/ch' }), syncController.authCb);
 router.get('/api/v1/sync', syncController.syncSteps);
+router.get('/api/v1/playersync', syncController.playerSync);
 
 module.exports = router;

@@ -13,24 +13,48 @@ module.exports.topTeamPlayers = (req, res) => {
             res.json(error);
             return;
         }
-        res.json(players.sort((a, b) => b.points - a.points));
+        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+           
+            name: e.name,
+            steps: e.steps,
+            points: e.points 
+            
+        })));
     })
 }
 
 module.exports.topPlayers = (req, res) => {    
     Player.find({}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points));
+        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+           
+            name: e.name,
+            steps: e.steps,
+            points: e.points 
+            
+        })));
     })
 }
 
 module.exports.topMalePlayers = (req, res) => {    
     Player.find({gender: 'male'}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points));
+        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+           
+            name: e.name,
+            steps: e.steps,
+            points: e.points 
+            
+        })));
     })
 }
 
 module.exports.topFemalePlayers = (req, res) => {    
     Player.find({gender: 'female'}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points));
+        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+           
+            name: e.name,
+            steps: e.steps,
+            points: e.points 
+            
+        })));
     })
 }
