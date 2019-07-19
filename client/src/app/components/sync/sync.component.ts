@@ -14,7 +14,6 @@ export class SyncComponent implements OnInit {
 	private isStepsCounted = false;
 	public stepCounts = [];
 	private totalStepCount = 0;
-	private googleAuthUrl = environment.googleAuthUrl;
 	private tempMessage = '';
 
 	public getGmail(): string {
@@ -40,19 +39,18 @@ export class SyncComponent implements OnInit {
 	}
 
 	signIn() {
-		if (!localStorage.getItem('googleoauth')) {
+		// if (!localStorage.getItem('googleoauth')) {
 			this.googleFitService
 				.init()
 				.then(() => {
 					console.log('inited');
-					this.getSyncData();
 				})
 				.catch(err => {
 					console.log(err);
 				});
-		} else {
-			this.getSyncData();
-		}
+		// } else {
+			// this.getSyncData();
+		// }
 	}
 
 	getSyncData() {
@@ -118,7 +116,7 @@ export class SyncComponent implements OnInit {
 	viewStepCount() {
 		const timeGap = {
 			endTimeMillis: +new Date(),
-			startTimeMillis: 1561228200000 // TODO get date from API
+			startTimeMillis: 1562437800000 // TODO get date from API
 		};
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
@@ -127,15 +125,16 @@ export class SyncComponent implements OnInit {
 					resp.bucket.forEach(element => {
 						if (element.dataset[0].point[0]) {
 							this.stepCounts.push({
-								dateSteps: new Date(+element.endTimeMillis),
-								stepsPerDay: element.dataset[0].point[0].value[0].intVal
+								date: new Date(+element.endTimeMillis),
+								steps: element.dataset[0].point[0].value[0].intVal
 							});
 						}
 					});
 					this.totalStepCount = this.stepCounts.reduce((total, current) =>
-						total + current.stepsPerDay
+						total + current.steps
 						, 0);
 					this.isStepsCounted = true;
+					this.googleFitService.syncData(this.stepCounts);
 				});
 			},
 			err => {
@@ -144,8 +143,8 @@ export class SyncComponent implements OnInit {
 		);
 	}
 
-	syncWithApi() {
-		this.googleFitService.syncData(this.stepCounts, this.totalStepCount);
-	}
+	// syncWithApi() {
+		
+	// }
 
 }

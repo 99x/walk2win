@@ -18,6 +18,7 @@ import { SharedConstants } from './constants/shared.constants';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PointsTableComponent } from './components/points-table/points-table.component';
 import { RulesAndRegulationsComponent } from './components/rules-and-regulations/rules-and-regulations.component';
+import { ManualSyncComponent } from './components/manual-sync/manual-sync.component';
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,8 @@ import { RulesAndRegulationsComponent } from './components/rules-and-regulations
 		TeamLeaderboardComponent,
 		PrivacyComponent,
 		PointsTableComponent,
-		RulesAndRegulationsComponent],
+		RulesAndRegulationsComponent,
+		ManualSyncComponent],
 	providers: [
 		GoogleFitService,
 		DataService,

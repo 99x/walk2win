@@ -1,0 +1,32 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header">Manula Sync Data</h5>
+    <div class="card-body">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>No. of Steps</label>
+                <input type="number" name="steps" class="form-control"
+                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" [(ngModel)]="model.steps"
+                    #steps="ngModel" [ngClass]="{ 'is-invalid': f.submitted && steps.invalid }" required>
+                <div *ngIf="f.submitted && steps.invalid" class="invalid-feedback">
+                    <div *ngIf="steps.errors.required">No. of Steps is required</div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Sync</button>
+                <button class="btn btn-secondary" type="reset">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
