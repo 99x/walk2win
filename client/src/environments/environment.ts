@@ -5,10 +5,8 @@
 export const environment = {
 	production: false,
 	baseApi: 'http://localhost:3003',
-	client_id: 'YOUR_CLIENT_ID',
-	apiKey: 'YOUR_API_KEY',
-	googleAuthUrl: 'http://localhost:3003/api/v1/auth/google'
-
+	client_id: '195162494249-aqt60jap5s951apfubo2auvclde0ge9i.apps.googleusercontent.com',
+	apiKey: 'AIzaSyDadiChkwWKcG_eIRR5tErt22AeUq8oF6U'
 };
 
 /*

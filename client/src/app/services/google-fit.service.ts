@@ -64,6 +64,13 @@ export class GoogleFitService {
 			);
 	}
 
+	public getGmail(): string {
+		if (localStorage.getItem('gmail')) {
+			return localStorage.getItem('gmail');
+		}
+		return null;
+	}
+
 	checkCount(timeGap: any): Observable<any> {
 		return new Observable<any>((observer: Observer<any>) => {
 			return gapi.client.fitness.users.dataset
@@ -105,13 +112,11 @@ export class GoogleFitService {
 		});
 	}
 
-	public syncData(stepCounts: any, totalStepCount: number) {
+	public syncData(stepCounts: any) {
 		const requestBody = {
-			steps: totalStepCount,
-			syncDate: stepCounts[Object.keys(stepCounts).length - 1].dateSteps,
-			playerGmail: this.loggedInEmail
+			stepCounts
 		};
-		console.log(requestBody);
+		console.log('requestbody', requestBody);
 		// TODO: Call API
 
 	}

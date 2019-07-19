@@ -1,15 +1,15 @@
 <div class="connect">
 
-    <div class="connect-container" *ngIf="false">
+    <div class="connect-container" *ngIf="!googleFitService.isSignedIn">
         <div class="Logo"><img src="./assets/img/w2w-logo.png" width="220"></div>
-        <div *ngIf="!getGmail()">
-            <a href="{{googleAuthUrl}}"><span class="btn btn-primary"><i class="icon-google"></i>
-                    Connect GoogleFit</span></a>
+        <div >
+            <span class="btn btn-primary"  (click)="signIn()"><i class="icon-google"></i>
+                    Connect GoogleFit</span>
         </div>
     </div>
 
-    <div class="connect-container" *ngIf="true">
-        <span (click)="getPlayerScore()" class="btn btn-primary">
+    <div class="connect-container" *ngIf="googleFitService.isSignedIn">
+        <span (click)="viewStepCount()" class="btn btn-primary">
             <i class="icon-sync"></i> Sync</span>
         <br />
         <br />
@@ -18,8 +18,8 @@
         </span>
     </div>
 
-    <div *ngIf="stepCounts">
-        <div class="pagetitle">Your steps counts by date</div>
+    <div *ngIf="isStepsCounted">
+        <div class="pagetitle">Hi {{ getGmail()}},  Your steps counts by date</div>
         <ul *ngIf="stepCounts" class="mysteps">
             <li class="title">
                 <div>Date</div>
@@ -29,13 +29,13 @@
             <li *ngFor="let step of stepCounts; let i = index" class="member">
                 <div>{{ step.date | date: 'fullDate' }}</div>
                 <div>{{ step.steps }}</div>
-                <div>{{ step.points }}</div>
+                <div>3846</div>
             </li>
 
             <li class="member total">
                 <div>Total</div>
-                <div>10000</div>
-                <div>350</div>
+                <div>{{totalStepCount}}</div>
+                <div>50000</div>
             </li>
         </ul>
     </div>
