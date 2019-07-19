@@ -9,16 +9,10 @@
     </div>
 
     <div class="connect-container" *ngIf="googleFitService.isSignedIn">
-        <span (click)="viewStepCount()" class="btn btn-primary">
-            <i class="icon-sync"></i> Sync</span>
-        Having issues syncing?<a [routerLink]="['/manualsync']">Click here for a manual sync</a>
-
-
+        <span (click)="viewStepCount()" class="btn btn-primary" style="padding: 15px 35px; font-size: 25px;"><i class="icon-sync"></i> Sync</span>
         <br />
         <br />
-        <span *ngIf="tempMessage && tempMessage?.length">
-            {{tempMessage}}
-        </span>
+        
     </div>
 
     <div *ngIf="isStepsCounted">
@@ -41,15 +35,22 @@
         </ul>
     </div>
 
-    <div>
+    <div class="appcontainer bottom navbar-light bg-light">
+        <div *ngIf="googleFitService.isSignedIn">
+            <br />
+            Having issues syncing?
+            <br />
+            <a [routerLink]="['/manualsync']"><b>Click here enter steps manually</b></a>
+            <span *ngIf="tempMessage && tempMessage?.length">
+                {{tempMessage}}
+            </span>
+        </div>
         <br />
-        <hr />
         <button type="button" [routerLink]="['/point']" class="btn btn-warning">Earn bonus points</button>
-        <br /> <br />
+        <hr />
+        <nav class="navbar ">
+            <a [routerLink]="['/rules']">Rules & Regulations</a>
+            <a [routerLink]="['/privacy']">Privacy</a>
+        </nav>
     </div>
-
-    <nav class="navbar bottom navbar-light bg-light">
-        <a [routerLink]="['/rules']">Rules & Regulations</a> |
-        <a [routerLink]="['/privacy']">Privacy</a>
-    </nav>
 </div>
