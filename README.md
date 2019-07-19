@@ -21,7 +21,57 @@
 - `GET /api/v1/leaderboard/topplayers`
 - `GET /api/v1/leaderboard/topmaleplayers`
 - `GET /api/v1/leaderboard/topfemaleplayers`
-- `GET /api/v1/sync`
+- `POST /api/v1/sync` - Replaces steps data, recalculates team/solo scores
+
+```json
+{
+	"stepCounts": [
+		{
+			"date": "2018-10-12",
+			"steps": 7500
+		},
+    {
+			"date": "2018-12-12",
+			"steps": 8500
+		}	
+	]
+}
+```
+
+- `POST /api/v1/syncmanual` - Update/Add single data point, recalculates team/solo scores
+
+```json
+{
+	"stepCounts": 
+		{
+			"date": "2018-10-12",
+			"steps": 7500
+		}
+}
+```
+- `GET /api/v1/playersync` - Retrive scores/steps for a specific player
+
+```json
+//Sample output
+{
+    "total_steps": [
+        {
+            "_id": "5d31f96c936e5360eaa83c94",
+            "steps": 5500,
+            "points": 25,
+            "date": "2018-11-12T00:00:00.000Z"
+        },
+        {
+            "_id": "5d31ec3d41f5763bf038d9ae",
+            "date": "2018-10-12T00:00:00.000Z",
+            "steps": 5500,
+            "points": 25
+        }
+    ],
+    "steps": 11000,
+    "points": 50
+}
+```
 
 ### Developer Setup
 
