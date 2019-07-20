@@ -12,7 +12,6 @@ module.exports.syncStepsManual = async (req, res) => {
     type: player.team ? 'team' : 'solo'
   });
 
-  console.log(date, points,steps);
   const opt = {
     upsert: true
   };
@@ -59,6 +58,22 @@ module.exports.syncSteps = async (req, res) => {
     })
 
   }));
+
+  // Bring existing data to current input
+  let currentTotalSteps = player.total_steps;
+  for (let node of currentTotalSteps) {
+    let el = totalSteps.findIndex((e) => {
+      return e.date.getTime() == node.date.getTime()
+    });
+    if(el == -1) {
+      totalSteps.push({
+        date: node.date,
+        steps: node.steps,
+        points: node.points
+      });
+    }
+  }
+
 
   await Player.updateOne({_id: player.id}, {
     total_steps: totalSteps
