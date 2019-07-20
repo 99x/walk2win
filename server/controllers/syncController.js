@@ -1,4 +1,3 @@
-let Team = require("../models/team");
 let Player = require("../models/player");
 let pointCalc = require("../helpers/pointCalculator");
 
