@@ -50,6 +50,14 @@ export class DataService {
 		return from(this.http.get(this.createUrl(url)));
 	}
 
+	/**
+ 	* Get Team leaderboard values for male, female or individual
+ 	* @param url the api endpoint url to be called
+ 	*/
+	public getTeamList(url: string) {
+		return from(this.http.get(this.createUrl(url)));
+	}
+
 
 	/**
 	 * Add manual sync for player

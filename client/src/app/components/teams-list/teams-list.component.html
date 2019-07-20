@@ -1,0 +1,23 @@
+<div>
+    <div *ngIf="!isMemberSelected">
+        <div class="pagetitle">Teams leaderboard</div>
+        <ul class="leaderboard">
+            <li class="title">
+                <div>#</div>
+                <div>Team Name</div>
+                <div>Steps</div>
+                <div>Points</div>
+            </li>
+            <li class="team" *ngFor="let team of teams; let i = index">
+                <div>{{ (i + 1) | number : '2.' }}</div>
+                <div><a (click)="getTeamList(team)">{{ team.name | titlecase }}</a></div>
+                <div>{{ team.steps | number : '2.' }}</div>
+                <div>{{ team.steps | number : '2.' }}</div>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="isMemberSelected">
+        <app-team-members [team]="team" (backClicked)="isMemberSelected = false">
+        </app-team-members>
+    </div>
+</div>
