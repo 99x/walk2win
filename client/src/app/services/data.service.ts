@@ -11,7 +11,6 @@ export class DataService {
 	private buildHttpOptions(): any {
 		return {
 			headers: new HttpHeaders({
-				Authorization: this.createBearerToken(),
 				gmail: decodeURIComponent(localStorage.getItem('gmail'))
 			})
 		};
@@ -69,6 +68,10 @@ export class DataService {
 				gmail: model.stepCounts.email
 			})
 		}));
+	}
+
+	public syncStepsData(url: string, requestBody: any) {
+		return from(this.http.post(this.createUrl(url), requestBody, this.buildHttpOptions()));
 	}
 
 }
