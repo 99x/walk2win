@@ -1,5 +1,9 @@
 <!-- main app container -->
 <div class="appcontainer">
+    <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47"
+        type="ball-clip-rotate-pulse" [fullScreen]="true">
+        <p style="color: white"> Loading... </p>
+    </ngx-spinner>
     <h5 class="pagetitle">Enter your steps</h5>
     <div class="card-body">
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -31,9 +35,9 @@
                 <div class="form-group">
                     <label>Date*</label>
                     <div class="input-group">
-                        <input class="form-control" [ngClass]="{ 'is-invalid': f.submitted && steps.invalid }"
+                        <input class="form-control" [ngClass]="{ 'is-invalid': f.submitted && date.invalid }"
                             placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model.date" #date="ngModel" ngbDatepicker
-                            #d="ngbDatepicker" [minDate]="{year: 2019, month: 7, day: 21}"
+                            #d="ngbDatepicker" [minDate]="{year: 2019, month: 7, day: 20}"
                             [maxDate]="{year: 2019, month: 8, day: 12}" [required]="true">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary icon-calendar" (click)="d.toggle()"
@@ -42,7 +46,8 @@
                     </div>
                 </div>
             </form>
-            <div *ngIf="f.submitted && date?.invalid" class="errormessage">
+            <div *ngIf="f.submitted && date?.invalid || dateError" class="errormessage">
+                <div *ngIf="dateError">You have entered a future date</div>
                 <div *ngIf="date.errors?.required">Date is required</div>
             </div>
 

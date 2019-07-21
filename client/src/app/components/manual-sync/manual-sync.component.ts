@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
+import { DataService } from 'src/app/services/data.service';
 @Component({
 	selector: 'app-manual-sync',
 	templateUrl: './manual-sync.component.html',
@@ -11,10 +13,12 @@ export class ManualSyncComponent implements OnInit {
 
 	constructor(
 		private dataService: DataService,
-		private router: Router) { }
+		private router: Router,
+		private spinner: NgxSpinnerService) { }
 
 	model: any = {};
 	displayError: string;
+	dateError = false;
 
 	public getGmail(): string {
 		if (localStorage.getItem('gmail')) {
@@ -31,11 +35,20 @@ export class ManualSyncComponent implements OnInit {
 		if (this.model.steps > 40000) {
 			return;
 		}
+		const date = `${this.model.date.year}-${this.model.date.month}-${this.model.date.day}`;
+		if (!moment(date).isSameOrBefore(moment())) {
+			this.dateError = true;
+			return;
+		} else {
+			this.dateError = false;
+		}
+		this.spinner.show();
+
 
 		const manualSyncUrl = '/api/v1/syncmanual';
 		const manualSyncModel = {
 			stepCounts: {
-				date: `${this.model.date.year}-${this.model.date.month}-${this.model.date.day}`,
+				date,
 				steps: this.model.steps,
 				email: this.model.email
 			}
@@ -43,7 +56,7 @@ export class ManualSyncComponent implements OnInit {
 
 		this.dataService.postManualSync(manualSyncUrl, manualSyncModel).subscribe((res: any) => {
 			console.log(res);
-
+			this.spinner.hide();
 			if (res.error) {
 				this.displayError = `${res.message}. If you want to join please contact the organizers. `;
 			} else {
