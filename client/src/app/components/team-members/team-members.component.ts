@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -17,16 +19,18 @@ export class TeamMembersComponent implements OnInit {
 
 	constructor
 		(
-			private dataService: DataService
+			private dataService: DataService,
+			private spinner: NgxSpinnerService
 		) { }
 
 	ngOnInit() {
-
+		this.spinner.show();
 		const getTeamListUrl = `/api/v1/leaderboard/topteams/${this.team._id}`;
 
 		this.dataService.getTeamList(getTeamListUrl).subscribe(response => {
-			console.log('res', response);
+			console.log(response);
 			this.teamMembers = response;
+			this.spinner.hide();
 		}, err => {
 			console.log(err);
 		});
