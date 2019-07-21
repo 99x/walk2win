@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
+
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as moment from 'moment';
 
 import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
@@ -104,14 +106,13 @@ export class SyncComponent implements OnInit {
 		this.dataService.getPlayerScore(playerSyncDataUrl).subscribe(
 			(res: any) => {
 				console.log(res);
+				this.spinner.hide();
 				if (res.error) {
 					this.displayError = `${res.message}. If you want to join please contact the organizers. `;
 					return;
 				}
 				this.stepCounts = res;
-				this.spinner.hide();
 				this.isStepsCounted = true;
-
 			},
 			err => {
 				console.log(err);
@@ -130,19 +131,18 @@ export class SyncComponent implements OnInit {
 				const stepCounts = [];
 				this.ngZone.run(() => {
 					resp.bucket.forEach(element => {
-						// 66600000 is the difference between full dates in milliseconds, checking if full date is done else minusing 1
+						console.log(moment(+element.endTimeMillis - (24 * 60 * 60 * 1000)).format('YYYY-MM-DD'));
+						// 66600000 is the difference between full dates in milliseconds, checking if full date is done else minus 1 day
 						if (element.dataset[0].point[0]) {
+							// .subtract(7, 'days')
 							stepCounts.push({
-								date: +element.endTimeMillis % (24 * 60 * 60 * 1000) === 66600000 ? new Date(+element.endTimeMillis - (24 * 60 * 60 * 1000))
-									: new Date(+element.endTimeMillis),
+								date: +element.endTimeMillis % (24 * 60 * 60 * 1000) === 66600000 ?
+									moment(+element.endTimeMillis).subtract(1, 'days').format('YYYY-MM-DD')
+									: moment(+element.endTimeMillis).format('YYYY-MM-DD'),
 								steps: element.dataset[0].point[0].value[0].intVal
 							});
 						}
 					});
-					// this.totalStepCount = this.stepCounts.reduce((total, current) =>
-					// 	total + current.steps
-					// 	, 0);
-
 					this.syncData(stepCounts);
 				});
 			},
