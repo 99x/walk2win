@@ -11,12 +11,14 @@ import { CookieService } from 'src/app/services/cookie.service';
 	styleUrls: ['./sync.component.less']
 })
 export class SyncComponent implements OnInit {
-	private isStepsCounted = false;
-	public stepCounts = [];
-	private totals = {
+	isStepsCounted = false;
+	stepCounts = [];
+	totals = {
 		totalSteps: 0,
 		totalPoints: 0
 	};
+	displayError: string;
+
 	private tempMessage = '';
 
 	public getGmail(): string {
@@ -95,6 +97,10 @@ export class SyncComponent implements OnInit {
 		this.dataService.getPlayerScore(playerSyncDataUrl).subscribe(
 			(res: any) => {
 				console.log(res);
+				if (res.error) {
+					this.displayError = `${res.message}. If you want to join please contact the organizers. `;
+					return;
+				}
 				this.stepCounts = res;
 				this.isStepsCounted = true;
 

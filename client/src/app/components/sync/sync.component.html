@@ -15,7 +15,7 @@
         <br />
 
     </div>
-
+    <div *ngIf="displayError" class="alert alert-danger">{{displayError}}</div>
     <div *ngIf="isStepsCounted">
         <div class="pagetitle">Hi {{ getGmail()}}, Your steps counts by date</div>
         <ul *ngIf="stepCounts" class="mysteps">
