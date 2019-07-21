@@ -264,9 +264,8 @@ a {
 }
 
 .mysteps li div:last-child {
-  min-width: 50px;
+  min-width: 90px;
   padding-right: 10px;
-  font-size: 11px;
   text-align: right;
 }
 
@@ -300,7 +299,7 @@ a {
 
 .mysteps .total {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
   padding: 12px 0;
   background: #ccc;
 }

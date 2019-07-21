@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { DataService } from 'src/app/services/data.service';
 
@@ -14,11 +15,16 @@ export class TeamLeaderboardComponent implements OnInit {
 	private malePlayers: any;
 	private femalePlayers: any;
 
-	constructor(private dataService: DataService, private router: Router) { }
+	constructor(
+		private dataService: DataService,
+		private router: Router,
+		private spinner: NgxSpinnerService) { }
 
 	ngOnInit() {
+		this.spinner.show();
 		this.loadMaleLeaderboard();
 		this.loadFemaleLeaderboard();
+		this.spinner.hide();
 	}
 
 
