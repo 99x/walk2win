@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class ManualSyncComponent implements OnInit {
 
-	constructor(private dataService: DataService, private router: Router) { }
+	constructor(
+		private dataService: DataService,
+		private router: Router) { }
 
 	model: any = {};
 	displayError: string;
@@ -25,9 +27,11 @@ export class ManualSyncComponent implements OnInit {
 		this.model.email = this.getGmail();
 	}
 
-
-
 	onSubmit() {
+		if (this.model.steps > 40000) {
+			return;
+		}
+
 		const manualSyncUrl = '/api/v1/syncmanual';
 		const manualSyncModel = {
 			stepCounts: {
@@ -39,6 +43,7 @@ export class ManualSyncComponent implements OnInit {
 
 		this.dataService.postManualSync(manualSyncUrl, manualSyncModel).subscribe((res: any) => {
 			console.log(res);
+
 			if (res.error) {
 				this.displayError = `${res.message}. If you want to join please contact the organizers. `;
 			} else {

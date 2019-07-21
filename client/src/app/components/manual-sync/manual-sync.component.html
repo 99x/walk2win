@@ -15,14 +15,16 @@
             </div>
             <div class="form-group">
                 <label>No. of Steps*</label>
-                <input type="number" name="steps" class="form-control"
-                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" maxlength="5"
-                    [(ngModel)]="model.steps" #steps="ngModel" (ngModelChange)="model.steps = $event + ''"
-                    [ngClass]="{ 'is-invalid': f.submitted && steps.invalid }" required>
+                <input type="number" name="steps" class="form-control" placeholder="Enter steps"
+                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" [(ngModel)]="model.steps"
+                    #steps="ngModel" [ngClass]="{ 'is-invalid': f.submitted && steps.invalid }" required>
+
+                <div class="errormessage" *ngIf="model?.steps > 40000">You have reached the maximum number of
+                    steps that could be
+                    entered.</div>
                 <div *ngIf="f.submitted && steps.invalid" class="invalid-feedback">
                     <div *ngIf="steps.errors.required">No. of Steps is required</div>
-                    <div *ngIf="steps.errors.maxlength">You have reached the maximum number of steps that could be
-                        entered.</div>
+
                 </div>
             </div>
             <form class="form-inline">
