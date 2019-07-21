@@ -1,8 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { Params, ActivatedRoute } from '@angular/router';
 
 import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
 import { CookieService } from 'src/app/services/cookie.service';
+
 @Component({
 	selector: 'app-sync',
 	templateUrl: './sync.component.html',
@@ -28,7 +30,8 @@ export class SyncComponent implements OnInit {
 		private ngZone: NgZone,
 		private googleFitService: GoogleFitService,
 		private dataService: DataService,
-		private cookieService: CookieService
+		private cookieService: CookieService,
+		private activatedRoute: ActivatedRoute
 	) { }
 
 	ngOnInit() {
@@ -37,6 +40,15 @@ export class SyncComponent implements OnInit {
 		// 	localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
 		// 	this.getPlayerScore();
 		// }
+
+		this.activatedRoute.queryParams.subscribe((params: Params) => {
+			if (window.history.state.isManualSync) {
+				this.totals.totalPoints = window.history.state.syncResp.totalPoints;
+				this.totals.totalSteps = window.history.state.syncResp.totalSteps;
+				this.getPlayerScore();
+			}
+		});
+
 	}
 
 	signIn() {
@@ -79,36 +91,13 @@ export class SyncComponent implements OnInit {
 
 	getPlayerScore() {
 		const playerSyncDataUrl = `/api/v1/playersync`;
-		// this.stepCounts = [{
-		// 	steps: 12,
-		// 	date: '12/12/2018',
-		// 	points: 100
-		// },{
-		// 	steps: 14,
-		// 	date: '12/15/2018',
-		// 	points: 100
-		// },{
-		// 	steps: 17,
-		// 	date: '12/18/2018',
-		// 	points: 100
-		// }]
+
 		this.dataService.getPlayerScore(playerSyncDataUrl).subscribe(
 			(res: any) => {
 				console.log(res);
 				this.stepCounts = res;
-				// this.stepCounts = [{
-				// 	steps: 12,
-				// 	date: '12/12/2018',
-				// 	points: 100
-				// },{
-				// 	steps: 14,
-				// 	date: '12/15/2018',
-				// 	points: 100
-				// },{
-				// 	steps: 17,
-				// 	date: '12/18/2018',
-				// 	points: 100
-				// }]
+				this.isStepsCounted = true;
+
 			},
 			err => {
 				console.log(err);
@@ -120,7 +109,6 @@ export class SyncComponent implements OnInit {
 			endTimeMillis: +new Date(),
 			startTimeMillis: 1561401000000
 		};
-		;
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
@@ -158,14 +146,7 @@ export class SyncComponent implements OnInit {
 		this.dataService.syncStepsData(url, requestBody).subscribe((res: any) => {
 			console.log('sync ', res);
 			this.totals = res;
-			const playerSyncUrl = '/api/v1/playersync';
-			this.dataService.getPlayerScore(playerSyncUrl).subscribe((resp: any) => {
-				console.log('resscores', resp);
-				this.stepCounts = resp;
-				this.isStepsCounted = true;
-			}, err => {
-				console.log('err');
-			});
+			this.getPlayerScore();
 		}, err => {
 			console.log(err);
 

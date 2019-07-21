@@ -12,8 +12,17 @@ export class ManualSyncComponent implements OnInit {
 	constructor(private dataService: DataService, private router: Router) { }
 
 	model: any = {};
+	displayError: string;
+
+	public getGmail(): string {
+		if (localStorage.getItem('gmail')) {
+			return localStorage.getItem('gmail');
+		}
+		return null;
+	}
 
 	ngOnInit() {
+		this.model.email = this.getGmail();
 	}
 
 
@@ -28,10 +37,12 @@ export class ManualSyncComponent implements OnInit {
 			}
 		};
 
-		this.dataService.postManualSync(manualSyncUrl, manualSyncModel).subscribe(res => {
+		this.dataService.postManualSync(manualSyncUrl, manualSyncModel).subscribe((res: any) => {
 			console.log(res);
-			if (res) {
-				this.router.navigate(['/']);
+			if (res.error) {
+				this.displayError = `${res.message}. If you want to join please contact the organizers. `;
+			} else {
+				this.router.navigate(['/'], { state: { isManualSync: true, syncResp: res } });
 			}
 		}, err => {
 			console.log(err);
