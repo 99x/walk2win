@@ -123,7 +123,7 @@ export class SyncComponent implements OnInit {
 		this.spinner.show();
 		const timeGap = {
 			endTimeMillis: +new Date(),
-			startTimeMillis: 1561401000000
+			startTimeMillis: 1563733800000
 		};
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
@@ -131,10 +131,8 @@ export class SyncComponent implements OnInit {
 				const stepCounts = [];
 				this.ngZone.run(() => {
 					resp.bucket.forEach(element => {
-						console.log(moment(+element.endTimeMillis - (24 * 60 * 60 * 1000)).format('YYYY-MM-DD'));
 						// 66600000 is the difference between full dates in milliseconds, checking if full date is done else minus 1 day
 						if (element.dataset[0].point[0]) {
-							// .subtract(7, 'days')
 							stepCounts.push({
 								date: +element.endTimeMillis % (24 * 60 * 60 * 1000) === 66600000 ?
 									moment(+element.endTimeMillis).subtract(1, 'days').format('YYYY-MM-DD')
@@ -159,14 +157,11 @@ export class SyncComponent implements OnInit {
 		console.log('requestbody', requestBody);
 		const url = '/api/v1/sync';
 		this.dataService.syncStepsData(url, requestBody).subscribe((res: any) => {
-			console.log('sync ', res);
 			this.totals = res;
 			this.getPlayerScore();
 		}, err => {
 			console.log(err);
-
 		});
-		// TODO: Call API
 
 	}
 
