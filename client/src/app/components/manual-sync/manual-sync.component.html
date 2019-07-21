@@ -22,11 +22,25 @@
                     <div *ngIf="steps.errors.required">No. of Steps is required</div>
                 </div>
             </div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model.date"
+                            ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 2019, month: 7, day: 21}"
+                            [maxDate]="{year: 2019, month: 8, day: 12}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
             <div class="text-center">
                 <button class="btn btn-primary mr-1">Sync</button>
-                <button class="btn btn-secondary" type="reset">Cancel</button>
+                <button class="btn btn-secondary" [routerLink]="['/']" type="reset">Cancel</button>
             </div>
         </form>
+        <hr />
     </div>
 </div>

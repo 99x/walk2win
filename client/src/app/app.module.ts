@@ -19,6 +19,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { PointsTableComponent } from './components/points-table/points-table.component';
 import { RulesAndRegulationsComponent } from './components/rules-and-regulations/rules-and-regulations.component';
 import { ManualSyncComponent } from './components/manual-sync/manual-sync.component';
+import { TeamMembersComponent } from './components/team-members/team-members.component';
+import { TeamsListComponent } from './components/teams-list/teams-list.component';
 
 @NgModule({
 	declarations: [
@@ -28,7 +30,9 @@ import { ManualSyncComponent } from './components/manual-sync/manual-sync.compon
 		PrivacyComponent,
 		PointsTableComponent,
 		RulesAndRegulationsComponent,
-		ManualSyncComponent],
+		ManualSyncComponent,
+		TeamMembersComponent,
+		TeamsListComponent],
 	providers: [
 		GoogleFitService,
 		DataService,

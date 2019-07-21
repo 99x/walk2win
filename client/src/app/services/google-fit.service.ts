@@ -112,12 +112,5 @@ export class GoogleFitService {
 		});
 	}
 
-	public syncData(stepCounts: any) {
-		const requestBody = {
-			stepCounts
-		};
-		console.log('requestbody', requestBody);
-		// TODO: Call API
 
-	}
 }

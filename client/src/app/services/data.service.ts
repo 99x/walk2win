@@ -11,7 +11,6 @@ export class DataService {
 	private buildHttpOptions(): any {
 		return {
 			headers: new HttpHeaders({
-				Authorization: this.createBearerToken(),
 				gmail: decodeURIComponent(localStorage.getItem('gmail'))
 			})
 		};
@@ -48,6 +47,31 @@ export class DataService {
 	 */
 	public getTeamsLeaderboardValues(url: string) {
 		return from(this.http.get(this.createUrl(url)));
+	}
+
+	/**
+ 	* Get Team leaderboard values for male, female or individual
+ 	* @param url the api endpoint url to be called
+ 	*/
+	public getTeamList(url: string) {
+		return from(this.http.get(this.createUrl(url)));
+	}
+
+
+	/**
+	 * Add manual sync for player
+	 * @param url the api endpoint url to be called
+	 */
+	public postManualSync(url: string, model: any) {
+		return from(this.http.post(this.createUrl(url), model, {
+			headers: new HttpHeaders({
+				gmail: model.stepCounts.email
+			})
+		}));
+	}
+
+	public syncStepsData(url: string, requestBody: any) {
+		return from(this.http.post(this.createUrl(url), requestBody, this.buildHttpOptions()));
 	}
 
 }

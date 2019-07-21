@@ -9,10 +9,11 @@
     </div>
 
     <div class="connect-container" *ngIf="googleFitService.isSignedIn">
-        <span (click)="viewStepCount()" class="btn btn-primary" style="padding: 15px 35px; font-size: 25px;"><i class="icon-sync"></i> Sync</span>
+        <span (click)="viewStepCount()" class="btn btn-primary" style="padding: 15px 35px; font-size: 25px;"><i
+                class="icon-sync"></i> Sync</span>
         <br />
         <br />
-        
+
     </div>
 
     <div *ngIf="isStepsCounted">
@@ -23,15 +24,15 @@
                 <div>Steps</div>
                 <div>Points</div>
             </li>
-            <li *ngFor="let step of stepCounts; let i = index" class="member">
+            <li *ngFor="let step of stepCounts.total_steps; let i = index" class="member">
                 <div>{{ step.date | date: 'fullDate' }}</div>
                 <div>{{ step.steps }}</div>
-                <div>3846</div>
-
-                <div>{{totalStepCount}}</div>
-                <div>50000</div>
+                <div>{{ step.points }}</div>
             </li>
-
+            <li class="total">
+                <div>{{totals?.totalSteps}}</div>
+                <div>{{totals?.totalPoints}}</div>
+            </li>
         </ul>
     </div>
 
@@ -41,9 +42,7 @@
             Having issues syncing?
             <br />
             <a [routerLink]="['/manualsync']"><b>Click here enter steps manually</b></a>
-            <span *ngIf="tempMessage && tempMessage?.length">
-                {{tempMessage}}
-            </span>
+
         </div>
         <br />
         <button type="button" [routerLink]="['/point']" class="btn btn-warning">Earn bonus points</button>
