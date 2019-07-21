@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { GoogleFitService } from '../../services/google-fit.service';
 import { DataService } from 'src/app/services/data.service';
@@ -28,12 +29,17 @@ export class SyncComponent implements OnInit {
 		return null;
 	}
 
+	public getGoogleFitService(): any {
+		return this.googleFitService;
+	}
+
 	constructor(
 		private ngZone: NgZone,
 		private googleFitService: GoogleFitService,
 		private dataService: DataService,
 		private cookieService: CookieService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private spinner: NgxSpinnerService
 	) { }
 
 	ngOnInit() {
@@ -45,6 +51,7 @@ export class SyncComponent implements OnInit {
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			if (window.history.state.isManualSync) {
+				this.spinner.show();
 				this.totals.totalPoints = window.history.state.syncResp.totalPoints;
 				this.totals.totalSteps = window.history.state.syncResp.totalSteps;
 				this.getPlayerScore();
@@ -102,6 +109,7 @@ export class SyncComponent implements OnInit {
 					return;
 				}
 				this.stepCounts = res;
+				this.spinner.hide();
 				this.isStepsCounted = true;
 
 			},
@@ -111,6 +119,7 @@ export class SyncComponent implements OnInit {
 	}
 
 	viewStepCount() {
+		this.spinner.show();
 		const timeGap = {
 			endTimeMillis: +new Date(),
 			startTimeMillis: 1561401000000
