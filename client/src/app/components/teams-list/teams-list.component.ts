@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { DataService } from 'src/app/services/data.service';
 
@@ -14,9 +15,13 @@ export class TeamsListComponent implements OnInit {
 
 	isMemberSelected: boolean;
 	team: any;
-	constructor(private router: Router, private dataService: DataService) { }
+	constructor(
+		private router: Router,
+		private dataService: DataService,
+		private spinner: NgxSpinnerService) { }
 
 	ngOnInit() {
+		this.spinner.show();
 		this.loadTeamsLeaderboard();
 	}
 
@@ -25,6 +30,7 @@ export class TeamsListComponent implements OnInit {
 		this.dataService.getTeamsLeaderboardValues(topTeamsEndpoint)
 			.subscribe((teams: any) => {
 				this.teams = teams;
+				this.spinner.hide();
 			});
 	}
 
