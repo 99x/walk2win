@@ -4,6 +4,14 @@ let pointCalc = require("../helpers/pointCalculator");
 module.exports.syncStepsManual = async (req, res) => {
   let playerGmail = req.headers.gmail;
   let player = await Player.findOne({gmail: playerGmail});
+
+  if(!player) {
+    return res.json({
+      error: true,
+      message: "Player is not registered"
+    });
+  }
+
   let date = new Date(req.body.stepCounts.date);
   let steps = req.body.stepCounts.steps;
   let points = pointCalc.calculatePoints({
@@ -48,6 +56,14 @@ module.exports.syncStepsManual = async (req, res) => {
 module.exports.syncSteps = async (req, res) => {
   let playerGmail = req.headers.gmail;
   let player = await Player.findOne({gmail: playerGmail});
+
+  if(!player) {
+    return res.json({
+      error: true,
+      message: "Player is not registered"
+    });
+  }
+
   let totalSteps = req.body.stepCounts.map((item) => ({
     date: new Date(item.date),
     steps: item.steps,
@@ -107,11 +123,10 @@ module.exports.playerSync = function(req, res) {
       return;
     }
     if(!player) {
-      res.json({
+      return res.json({
         error: true,
-        message: 'player not found'
+        message: "Player is not registered"
       });
-      return;
     }
     res.json({
       total_steps: player.total_steps.sort((a, b) => new Date(b.date) - new Date(a.date)),
