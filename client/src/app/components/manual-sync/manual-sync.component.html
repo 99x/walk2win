@@ -1,5 +1,5 @@
 <!-- main app container -->
-<div class="container">
+<div class="appcontainer">
     <h5 class="pagetitle">Enter your steps</h5>
     <div class="card-body">
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -34,13 +34,13 @@
                             #d="ngbDatepicker" [minDate]="{year: 2019, month: 7, day: 21}"
                             [maxDate]="{year: 2019, month: 8, day: 12}" [required]="true">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                            <button class="btn btn-outline-secondary icon-calendar" (click)="d.toggle()"
                                 type="button"></button>
                         </div>
                     </div>
                 </div>
             </form>
-            <div *ngIf="f.submitted && date?.invalid" class="invalid-feedback">
+            <div *ngIf="f.submitted && date?.invalid" class="errormessage">
                 <div *ngIf="date.errors?.required">Date is required</div>
             </div>
 
