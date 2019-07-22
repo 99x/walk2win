@@ -32,7 +32,7 @@ let insertToMongo = async (results) => {
                 points: 0,
                 steps: 0,
                 name: row['Name'],
-                gmail: row['Email (Gmail)']
+                gmail: row['Email (Gmail)'].trim()
             });
         }
         else if(row['Participating as'] == 'Team'){
@@ -69,7 +69,7 @@ let insertToMongo = async (results) => {
                     points: 0,
                     steps: 0,
                     name: row[nameKey],
-                    gmail: row[emailKey]
+                    gmail: row[emailKey].trim()
                 });
             }
         }
