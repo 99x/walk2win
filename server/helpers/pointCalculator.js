@@ -61,8 +61,16 @@ let calculateTotalsTeam = async (id, myId) => {
     return myRes;
 }
 
+let leaderboardComparator = (a, b) => {
+    const c = b.points - a.points;
+    if(c == 0)
+        return b.steps - a.steps;
+    return c;
+}
+
 module.exports = {
     calculatePoints: calculatePoints,
     calculateTotalsSolo: calculateTotalsSolo,
-    calculateTotalsTeam: calculateTotalsTeam
+    calculateTotalsTeam: calculateTotalsTeam,
+    leaderboardComparator: leaderboardComparator
 };

@@ -1,9 +1,10 @@
 let Team = require('../models/team');
 let Player = require('../models/player');
+let leaderboardComparator = require('../helpers/pointCalculator').leaderboardComparator;
 
 module.exports.topTeams = (req, res) => {    
     Team.find({}, (error, teams) => {
-        res.json(teams.sort((a, b) => b.points - a.points));
+        res.json(teams.sort(leaderboardComparator));
     })
 }
 
@@ -13,7 +14,7 @@ module.exports.topTeamPlayers = (req, res) => {
             res.json(error);
             return;
         }
-        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+        res.json(players.sort(leaderboardComparator).map( e => ({
            
             name: e.name,
             steps: e.steps,
@@ -25,7 +26,7 @@ module.exports.topTeamPlayers = (req, res) => {
 
 module.exports.topPlayers = (req, res) => {    
     Player.find({}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+        res.json(players.sort(leaderboardComparator).map( e => ({
            
             name: e.name,
             steps: e.steps,
@@ -37,7 +38,7 @@ module.exports.topPlayers = (req, res) => {
 
 module.exports.topMalePlayers = (req, res) => {    
     Player.find({gender: 'male'}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+        res.json(players.sort(leaderboardComparator).map( e => ({
            
             name: e.name,
             steps: e.steps,
@@ -49,7 +50,7 @@ module.exports.topMalePlayers = (req, res) => {
 
 module.exports.topFemalePlayers = (req, res) => {    
     Player.find({gender: 'female'}, (error, players) => {
-        res.json(players.sort((a, b) => b.points - a.points).map( e => ({
+        res.json(players.sort(leaderboardComparator).map( e => ({
            
             name: e.name,
             steps: e.steps,
