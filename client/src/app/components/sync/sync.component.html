@@ -20,8 +20,15 @@
     </div>
     <div *ngIf="displayError" class="alert alert-danger">{{displayError}}</div>
     <div *ngIf="isStepsCounted">
-        <div class="pagetitle">Hi {{ getGmail()}}, Your steps counts by date</div>
-        <ul *ngIf="stepCounts" class="mysteps">
+        <div *ngIf="stepCounts?.total_steps.length ===0" class="pagetitle">Hi {{ getGmail()}},There is no sync data. You
+            probably need to
+            charge your
+            phone
+            for Google
+            Fit to get synchronized.</div>
+        <div *ngIf="stepCounts?.total_steps.length !==0" class="pagetitle">Hi {{ getGmail()}}, Your steps counts by date
+        </div>
+        <ul *ngIf="stepCounts?.total_steps.length !==0" class="mysteps">
             <li class="title">
                 <div>Date</div>
                 <div>Steps</div>
