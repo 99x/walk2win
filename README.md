@@ -8,11 +8,11 @@
 - [x] Create required controllers 
 - [x] Add method to accept date + steps and update accordingly 
 - [x] Google Auth and extract daily steps 
-- [ ] API integration testing
-- [ ] Implement frontend according to the design
+- [x] API integration testing
+- [x] Implement frontend according to the design
 - [x] Create Dockerfile and docker-compose.yml
 - [x] Deploy into a AWS vm
-- [ ] User testing
+- [x] User testing
 
 ### REST API
 
