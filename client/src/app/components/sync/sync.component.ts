@@ -145,7 +145,13 @@ export class SyncComponent implements OnInit {
 				});
 			},
 			err => {
-				console.log('error view steps');
+				this.ngZone.run(() => {
+					this.spinner.hide();
+					console.log('error view steps');
+					this.displayError = 'Your google account isnt connected to Google Fit.\
+				 Please logout from Google Fit and login with registered gmail :)';
+				});
+
 			}
 		);
 	}
