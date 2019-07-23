@@ -1,14 +1,6 @@
 let marks = require('../constants');
 let Player = require('../models/player');
 let Team = require('../models/team');
-let bonusLimits = {
-  individual: 15500,
-  team: 60000
-};
-let bonusPoints = {
-  individual: 100,
-  team: 100
-}
 
 let calculatePoints = (options) => {
     let steps = options.steps;
@@ -76,57 +68,9 @@ let leaderboardComparator = (a, b) => {
     return c;
 }
 
-let calculateBonusSolo = async (id, date) => {
-    let player = await Player.findOne({_id: id, "total_steps.date": date});
-    if(!player) return;
-    let totalPoints = player.total_steps.points;
-    let totalSteps = player.total_steps.steps;
-    if(totalSteps >= bonusLimits.individual) {
-      totalPoints = totalPoints + bonusPoints.individual;
-    }
-
-    const opt = {
-      upsert: true
-    };
-
-    let elem = await Player.findOneAndUpdate({_id: player.id, "total_steps.date": date}, {
-      "$set": {
-        "total_steps.$.points": points
-      }, opt
-    });
-
-    return {
-        totalPoints: totalPoints,
-    };
-}
-
-let calculateTeamBonus = async (id, date) => {
-    let players = await Player.find({team: id});
-    if(!players) return;
-    let steps = 0;
-    let points = 0;
-    let myRes = {};
-
-    for(let player of players) {
-        let res = await calculateBonusSolo(player.id, date);
-        if(player.id == myId) 
-            myRes = res;
-        points += res.totalPoints;
-    }
-   
-    if(totalSteps >= bonusLimits.team) {
-      totalPoints = totalPoints + bonusPoints.team;	
-    }
-
-    await Team.updateOne({_id: id}, {points: totalPoints});
-    return myRes;
-}
-
 module.exports = {
     calculatePoints: calculatePoints,
     calculateTotalsSolo: calculateTotalsSolo,
     calculateTotalsTeam: calculateTotalsTeam,
-    leaderboardComparator: leaderboardComparator,
-    calculateBonusSolo: calculateBonusSolo,
-    calculateTeamBonus: calculateTeamBonus
+    leaderboardComparator: leaderboardComparator
 };
