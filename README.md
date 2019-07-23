@@ -19,6 +19,7 @@
 - `GET /api/v1/leaderboard/topteams`
 - `GET /api/v1/leaderboard/topteams/{teamId}`
 - `GET /api/v1/leaderboard/topplayers`
+- `GET /api/v1/leaderboard/topplayers/{playerId}`
 - `GET /api/v1/leaderboard/topmaleplayers`
 - `GET /api/v1/leaderboard/topfemaleplayers`
 - `POST /api/v1/sync` - Replaces steps data, recalculates team/solo scores
