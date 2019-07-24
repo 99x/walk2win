@@ -1,4 +1,4 @@
-<div class="connect">
+<div class="connect mt-5">
     <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47"
         type="ball-clip-rotate-pulse" [fullScreen]="true">
         <p style="color: white"> Loading... </p>
@@ -13,7 +13,7 @@
 
     <div class="connect-container" *ngIf="getGoogleFitService().isSignedIn">
         <span (click)="viewStepCount()" class="btn btn-primary" style="padding: 15px 35px; font-size: 25px;"><i
-                class="icon-sync"></i> Sync</span>
+                class="icon-sync"></i> Auto Sync</span>
         <br />
         <br />
 
@@ -47,20 +47,25 @@
         </ul>
     </div>
 
-    <div class="appcontainer bottom navbar-light bg-light">
-        <div *ngIf="getGoogleFitService().isSignedIn">
-            <br />
-            Having issues syncing?
-            <br />
-            <a [routerLink]="['/manualsync']"><b>Click here enter steps manually</b></a>
-
-        </div>
+    <div *ngIf="getGoogleFitService().isSignedIn">
         <br />
-        <button type="button" [routerLink]="['/point']" class="btn btn-warning">Earn bonus points</button>
+        Having issues when syncing?
+        <br />
+        <span [routerLink]="['/manualsync']" class="btn btn-secondary" >
+            <i class="icon-keyboard"></i> Enter Manually</span>
+        <!-- <a [routerLink]="['/manualsync']"><b>Enter manually</b></a> -->
+    </div>
+
+    <div class="appcontainer bottom navbar-light bg-light">
+        <!-- <button type="button" [routerLink]="['/point']" class="btn btn-warning">Earn bonus points</button> -->
         <hr />
         <nav class="navbar ">
             <a [routerLink]="['/rules']">Rules & Regulations</a>
             <a [routerLink]="['/privacy']">Privacy</a>
+        </nav>
+        <hr />
+        <nav class="navbar ">
+            Made with ❤️ by Opensource Initiative
         </nav>
     </div>
 </div>

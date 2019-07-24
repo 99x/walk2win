@@ -4,8 +4,8 @@
 <ul *ngIf="player?.stepCounts?.total_steps.length !==0" class="mysteps">
     <li class="title">
         <div>Date</div>
-        <div>Steps</div>
-        <div>Points</div>
+        <div>Total Steps</div>
+        <div>Total Points</div>
     </li>
     <li *ngFor="let step of player?.total_steps; let i = index" class="member">
         <div>{{ step.date | date: 'fullDate' }}</div>

@@ -15,6 +15,7 @@
 .icon-angle-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf105;&nbsp;'); }
 .icon-angle-up { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf106;&nbsp;'); }
 .icon-angle-down { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf107;&nbsp;'); }
+.icon-keyboard { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf11c;&nbsp;'); }
 .icon-left { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf177;&nbsp;'); }
 .icon-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf178;&nbsp;'); }
 .icon-female { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf182;&nbsp;'); }

@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label>Email*</label>
-                <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+                <input type="text" readonly name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
                 <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                     <div *ngIf="email.errors.required">Email is required</div>
