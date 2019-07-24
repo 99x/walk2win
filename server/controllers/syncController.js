@@ -25,7 +25,8 @@ module.exports.syncStepsManual = async (req, res) => {
   let elem = await Player.findOneAndUpdate({_id: player.id, "total_steps.date": date}, {
     "$set": {
       "total_steps.$.steps": steps,
-      "total_steps.$.points": points
+      "total_steps.$.points": points,
+      "total_steps.$.manual": true
     }, opt
   });
 
@@ -86,6 +87,13 @@ module.exports.syncSteps = async (req, res) => {
         steps: node.steps,
         points: node.points
       });
+    }
+    else {
+      if(node.manual) {
+        totalSteps[el].steps = node.steps;
+        totalSteps[el].points = node.points;
+        totalSteps[el].manual = true;
+      }
     }
   }
 

@@ -9,6 +9,7 @@ let playerSchema = new mongoose.Schema({
       date: Date,
       steps: Number,
       points: Number,
+      manual: Boolean
     }
   ],
   points: Number,
