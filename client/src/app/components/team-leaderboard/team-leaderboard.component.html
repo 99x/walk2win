@@ -22,21 +22,8 @@
                 <i class="icon-male"></i>
             </ng-template>
             <ng-template ngbTabContent>
-                <div class="pagetitle"><span class="small">Individual</span> Male</div>
-                <ul class="teammates">
-                    <li class="title">
-                        <div>#</div>
-                        <div>Name</div>
-                        <div>Steps</div>
-                        <div>Points</div>
-                    </li>
-                    <li class="team" *ngFor="let player of malePlayers; let i = index">
-                        <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div>{{ player.name | titlecase }}</div>
-                        <div>{{ player.steps | number : '2.' }}</div>
-                        <div>{{ player.points | number : '2.' }}</div>
-                    </li>
-                </ul>
+                <app-individual-list [players]="malePlayers">
+                </app-individual-list>
             </ng-template>
         </ngb-tab>
 
@@ -45,21 +32,8 @@
                 <i class="icon-female"></i>
             </ng-template>
             <ng-template ngbTabContent>
-                <div class="pagetitle"><span class="small">Individual</span> Female</div>
-                <ul class="teammates">
-                    <li class="title">
-                        <div>#</div>
-                        <div>Name</div>
-                        <div>Steps</div>
-                        <div>Points</div>
-                    </li>
-                    <li class="team" *ngFor="let player of femalePlayers; let i = index">
-                        <div>{{ (i + 1) | number : '2.' }}</div>
-                        <div>{{ player.name | titlecase}}</div>
-                        <div>{{ player.steps | number : '2.' }}</div>
-                        <div>{{ player.points | number : '2.' }}</div>
-                    </li>
-                </ul>
+                <app-individual-list [players]="femalePlayers">
+                </app-individual-list>
             </ng-template>
         </ngb-tab>
     </ngb-tabset>

@@ -24,6 +24,8 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { TeamsListComponent } from './components/teams-list/teams-list.component';
 
 import { SharedConstants } from './constants/shared.constants';
+import { IndividualComponent } from './components/individual/individual.component';
+import { IndividualListComponent } from './components/individual-list/individual-list.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -34,7 +36,9 @@ import { SharedConstants } from './constants/shared.constants';
 		RulesAndRegulationsComponent,
 		ManualSyncComponent,
 		TeamMembersComponent,
-		TeamsListComponent],
+		TeamsListComponent,
+		IndividualComponent,
+		IndividualListComponent],
 	providers: [
 		GoogleFitService,
 		DataService,

@@ -1,0 +1,20 @@
+<div class="pagetitle"><span (click)="navigateBack()"><i class="icon-left-thin"></i></span>{{ playerName | titlecase }}
+</div>
+
+<ul *ngIf="player?.stepCounts?.total_steps.length !==0" class="mysteps">
+    <li class="title">
+        <div>Date</div>
+        <div>Steps</div>
+        <div>Points</div>
+    </li>
+    <li *ngFor="let step of player?.total_steps; let i = index" class="member">
+        <div>{{ step.date | date: 'fullDate' }}</div>
+        <div>{{ step.steps }}</div>
+        <div>{{ step.points }}</div>
+    </li>
+    <li class="total">
+        <div></div>
+        <div>{{player?.steps}}</div>
+        <div>{{player?.points}}</div>
+    </li>
+</ul>

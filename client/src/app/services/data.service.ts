@@ -50,6 +50,14 @@ export class DataService {
 	}
 
 	/**
+ 	* Get individual player scores
+ 	* @param url the api endpoint url to be called
+ 	*/
+	public getIndividualPlayerScore(url: string) {
+		return from(this.http.get(this.createUrl(url)));
+	}
+
+	/**
  	* Get Team leaderboard values for male, female or individual
  	* @param url the api endpoint url to be called
  	*/

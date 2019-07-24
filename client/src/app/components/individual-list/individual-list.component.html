@@ -1,0 +1,25 @@
+<div *ngIf="!isMemberSelected">
+    <div class="pagetitle"><span class="small">Individual</span> Male</div>
+    <ul class="teammates">
+        <li class="title">
+            <div>#</div>
+            <div>Name</div>
+            <div>Steps</div>
+            <div>Points</div>
+        </li>
+        <li class="team" *ngFor="let player of players; let i = index">
+            <div>{{ (i + 1) | number : '2.' }}</div>
+            <div><a (click)="getIndividual(player)">{{ player.name | titlecase }}</a></div>
+            <div>{{ player.steps | number : '2.' }}</div>
+            <div>{{ player.points | number : '2.' }}</div>
+        </li>
+    </ul>
+</div>
+<div *ngIf="isMemberSelected">
+    <app-individual [player]="player" [playerName]="playerName" (backClicked)="isMemberSelected = false">
+    </app-individual>
+</div>
+<ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47" type="ball-clip-rotate-pulse"
+    [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
