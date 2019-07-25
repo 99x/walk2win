@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class IndividualListComponent implements OnInit {
 	@Input() players: any;
+	@Input() type: string;
 
 	player: any;
 	playerName: string;
