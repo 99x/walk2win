@@ -1,4 +1,4 @@
-<div class="connect mt-5">
+<div class="connect mt-5" *ngIf="displaySync">
     <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47"
         type="ball-clip-rotate-pulse" [fullScreen]="true">
         <p style="color: white"> Loading... </p>
@@ -36,13 +36,13 @@
             </li>
             <li *ngFor="let step of stepCounts.total_steps; let i = index" class="member">
                 <div>{{ step.date | date: 'fullDate' }}</div>
-                <div>{{ step.steps }}</div>
-                <div>{{ step.points }}</div>
+                <div>{{ step.steps | number : '2.'}}</div>
+                <div>{{ step.points | number : '2.'}}</div>
             </li>
             <li class="total">
                 <div></div>
-                <div>{{totals?.totalSteps}}</div>
-                <div>{{totals?.totalPoints}}</div>
+                <div>{{totals?.totalSteps | number : '2.'}}</div>
+                <div>{{totals?.totalPoints | number : '2.'}}</div>
             </li>
         </ul>
     </div>
@@ -51,7 +51,7 @@
         <br />
         Having issues when syncing?
         <br />
-        <span [routerLink]="['/manualsync']" class="btn btn-secondary" >
+        <span [routerLink]="['/manualsync']" class="btn btn-secondary">
             <i class="icon-keyboard"></i> Enter Manually</span><br /><br />
         <!-- <a [routerLink]="['/manualsync']"><b>Enter manually</b></a> -->
     </div>
@@ -68,4 +68,7 @@
             Made with ❤️ by Opensource Initiative
         </nav>
     </div>
+</div>
+<div class="connect mt-5" *ngIf="!displaySync">
+    <div>Connect with PC to sync</div>
 </div>

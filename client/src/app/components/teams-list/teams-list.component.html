@@ -8,6 +8,12 @@
                 <div>Total Steps</div>
                 <div>Total Points</div>
             </li>
+            <li class="team">
+                <div>{{ 0 | number : '2.' }}</div>
+                <div><a (click)="showImage()">{{ 'අමරබන්දු රූපසිංහ'| titlecase }}</a></div>
+                <div>{{42213103232 | number : '2.' }}</div>
+                <div>{{ '∞'  }}</div>
+            </li>
             <li class="team" *ngFor="let team of teams; let i = index">
                 <div>{{ (i + 1) | number : '2.' }}</div>
                 <div><a (click)="getTeamList(team)">{{ team.name | titlecase }}</a></div>
@@ -16,9 +22,50 @@
             </li>
         </ul>
     </div>
-    <div *ngIf="isMemberSelected">
+    <div *ngIf="isMemberSelected && !showJoke">
         <app-team-members [team]="team" (backClicked)="isMemberSelected = false">
         </app-team-members>
+    </div>
+    <div *ngIf="showJoke && isMemberSelected">
+        <div class="pagetitle"><span (click)="showJoke = isMemberSelected = false"><i
+                    class="icon-left-thin"></i></span>{{'අමරබන්දු රූපසිංහ'}}
+        </div>
+        <div>
+            <ul class="mysteps">
+                    <li class="title">
+                        <div>Member name</div>
+                        <div>Total Steps</div>
+                        <div>Total Points</div>
+                    </li>
+                    <li class="member">
+                        <div>Ranil Wikramasinghe</div>
+                        <div>34,567,567</div>
+                        <div>678,980</div>
+                    </li>
+                    <li class="member">
+                        <div>Iraj Weeraratne</div>
+                        <div>87,236,823</div>
+                        <div>276,934</div>
+                    </li>
+                    <li class="member">
+                        <div>Ranjan Ramanayake</div>
+                        <div>123,734,567</div>
+                        <div>364,897</div>
+                    </li>
+                    <li class="member">
+                        <div>වැව ළඟ අයියා </div>
+                        <div>232,567,567</div>
+                        <div>963,2563</div>
+                    </li>
+                    <li class="total">
+                        <div></div>
+                        <div>{{42213103232 | number : '2.' }}</div>
+                        <div>{{ '∞'  }}</div>
+                    </li>
+                </ul>
+                <br />
+            <img src="./assets/img/giphy.gif" width="100%">
+        </div>
     </div>
 </div>
 <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47" type="ball-clip-rotate-pulse"

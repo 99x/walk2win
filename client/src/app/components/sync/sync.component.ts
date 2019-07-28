@@ -21,8 +21,7 @@ export class SyncComponent implements OnInit {
 		totalPoints: 0
 	};
 	displayError: string;
-
-	private tempMessage = '';
+	displaySync = true;
 
 	public getGmail(): string {
 		if (localStorage.getItem('gmail')) {
@@ -45,11 +44,6 @@ export class SyncComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		// if (this.cookieService.getCookie('access_token') && this.cookieService.getCookie('gmail')) {
-		// 	localStorage.setItem('googleoauth', this.cookieService.getCookie('access_token'));
-		// 	localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
-		// 	this.getPlayerScore();
-		// }
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			if (window.history.state.isManualSync) {
@@ -57,6 +51,9 @@ export class SyncComponent implements OnInit {
 				this.totals.totalPoints = window.history.state.syncResp.totalPoints;
 				this.totals.totalSteps = window.history.state.syncResp.totalSteps;
 				this.getPlayerScore();
+			}
+			if (params.sync) {
+				this.displaySync = false;
 			}
 		});
 
@@ -92,7 +89,6 @@ export class SyncComponent implements OnInit {
 				console.log(res);
 				if (res.message) {
 					this.isStepsCounted = true;
-					this.tempMessage = res.message;
 				}
 			},
 			err => {

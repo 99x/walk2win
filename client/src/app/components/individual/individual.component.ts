@@ -5,7 +5,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 	templateUrl: './individual.component.html',
 	styleUrls: ['./individual.component.less']
 })
-export class IndividualComponent implements OnInit {
+export class IndividualComponent {
 	@Input() player: any;
 	@Input() playerName: string;
 
@@ -19,10 +19,6 @@ export class IndividualComponent implements OnInit {
 	}
 
 	constructor() { }
-
-	ngOnInit() {
-		console.log('player--', this.player);
-	}
 
 	navigateBack() {
 		this.backClicked.emit(true);

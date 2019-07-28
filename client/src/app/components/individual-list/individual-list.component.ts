@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { DataService } from 'src/app/services/data.service';
@@ -11,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class IndividualListComponent implements OnInit {
 	@Input() players: any;
 	@Input() type: string;
+	@Input() isTeam: boolean;
 
 	player: any;
 	playerName: string;

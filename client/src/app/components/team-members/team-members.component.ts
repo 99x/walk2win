@@ -17,6 +17,10 @@ export class TeamMembersComponent implements OnInit {
 
 	teamMembers: any;
 
+	isMemberSelected = false;
+	player: any;
+	playerName: string;
+
 	constructor
 		(
 			private dataService: DataService,
@@ -34,6 +38,16 @@ export class TeamMembersComponent implements OnInit {
 		}, err => {
 			console.log(err);
 		});
+	}
+
+	getIndividual(player: any) {
+		const topTeamsEndpoint = `/api/v1/leaderboard/topplayers/${player.id}`;
+		this.dataService.getIndividualPlayerScore(topTeamsEndpoint)
+			.subscribe((playerResp: any) => {
+				this.player = playerResp;
+				this.playerName = player.name;
+				this.isMemberSelected = true;
+			});
 	}
 
 	navigateBack() {
