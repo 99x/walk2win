@@ -36,7 +36,8 @@ export class GoogleFitService {
 		return gapi.auth2
 			.getAuthInstance()
 			.signIn({
-				scope: SharedConstants.GoogleFitnessApiScope
+				scope: SharedConstants.GoogleFitnessApiScope,
+				immediate: true
 			})
 			.then(
 				() => {

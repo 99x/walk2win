@@ -22,8 +22,6 @@ export class SyncComponent implements OnInit {
 	};
 	displayError: string;
 
-	private tempMessage = '';
-
 	public getGmail(): string {
 		if (localStorage.getItem('gmail')) {
 			return localStorage.getItem('gmail');
@@ -45,11 +43,6 @@ export class SyncComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		// if (this.cookieService.getCookie('access_token') && this.cookieService.getCookie('gmail')) {
-		// 	localStorage.setItem('googleoauth', this.cookieService.getCookie('access_token'));
-		// 	localStorage.setItem('gmail', decodeURIComponent(this.cookieService.getCookie('gmail')));
-		// 	this.getPlayerScore();
-		// }
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			if (window.history.state.isManualSync) {
@@ -92,7 +85,6 @@ export class SyncComponent implements OnInit {
 				console.log(res);
 				if (res.message) {
 					this.isStepsCounted = true;
-					this.tempMessage = res.message;
 				}
 			},
 			err => {

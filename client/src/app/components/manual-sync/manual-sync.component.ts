@@ -32,7 +32,7 @@ export class ManualSyncComponent implements OnInit {
 	}
 
 	onSubmit() {
-		if (this.model.steps > 40000) {
+		if (this.model.steps > 60000) {
 			return;
 		}
 		const date = `${this.model.date.year}-${this.model.date.month}-${this.model.date.day}`;

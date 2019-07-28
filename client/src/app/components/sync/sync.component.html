@@ -36,13 +36,13 @@
             </li>
             <li *ngFor="let step of stepCounts.total_steps; let i = index" class="member">
                 <div>{{ step.date | date: 'fullDate' }}</div>
-                <div>{{ step.steps }}</div>
-                <div>{{ step.points }}</div>
+                <div>{{ step.steps | number : '2.'}}</div>
+                <div>{{ step.points | number : '2.'}}</div>
             </li>
             <li class="total">
                 <div></div>
-                <div>{{totals?.totalSteps}}</div>
-                <div>{{totals?.totalPoints}}</div>
+                <div>{{totals?.totalSteps | number : '2.'}}</div>
+                <div>{{totals?.totalPoints | number : '2.'}}</div>
             </li>
         </ul>
     </div>
@@ -51,7 +51,7 @@
         <br />
         Having issues when syncing?
         <br />
-        <span [routerLink]="['/manualsync']" class="btn btn-secondary" >
+        <span [routerLink]="['/manualsync']" class="btn btn-secondary">
             <i class="icon-keyboard"></i> Enter Manually</span><br /><br />
         <!-- <a [routerLink]="['/manualsync']"><b>Enter manually</b></a> -->
     </div>

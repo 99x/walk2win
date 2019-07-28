@@ -1,22 +1,32 @@
-<div class="pagetitle"><span (click)="navigateBack()"><i class="icon-left-thin"></i></span>{{team?.name}}
+<div *ngIf="!isMemberSelected">
+    <div class="pagetitle"><span (click)="navigateBack()"><i class="icon-left-thin"></i></span>{{team?.name}}
+    </div>
+    <ul class="mysteps">
+        <li class="title">
+            <div>Member name</div>
+            <div>Total Steps</div>
+            <div>Total Points</div>
+        </li>
+        <li class="member" *ngFor="let player of teamMembers; let i = index">
+            <div><a (click)="getIndividual(player)">{{ player.name | titlecase }}</a></div>
+            <div>{{ player.steps | number : '2.' }}</div>
+            <div>{{ player.points | number : '2.' }}</div>
+        </li>
+        <li class="total">
+            <div></div>
+            <div>{{team.steps | number : '2.'}}</div>
+            <div>{{team.points| number : '2.'}}</div>
+        </li>
+    </ul>
 </div>
-<ul class="mysteps">
-    <li class="title">
-        <div>Member name</div>
-        <div>Total Steps</div>
-        <div>Total Points</div>
-    </li>
-    <li class="member" *ngFor="let player of teamMembers; let i = index">
-        <div>{{ player.name | titlecase }}</div>
-        <div>{{ player.steps | number : '2.' }}</div>
-        <div>{{ player.points | number : '2.' }}</div>
-    </li>
-    <li class="total">
-        <div></div>
-        <div>{{team.steps}}</div>
-        <div>{{team.points}}</div>
-    </li>
-</ul>
+<div *ngIf="isMemberSelected">
+    <app-individual [player]="player" [playerName]="playerName" (backClicked)="isMemberSelected = false">
+    </app-individual>
+</div>
+<div>
+
+
+</div>
 <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47" type="ball-clip-rotate-pulse"
     [fullScreen]="true">
     <p style="color: white"> Loading... </p>

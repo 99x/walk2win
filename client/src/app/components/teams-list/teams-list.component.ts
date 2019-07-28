@@ -13,6 +13,7 @@ export class TeamsListComponent implements OnInit {
 	teams: any;
 
 	isMemberSelected: boolean;
+	showJoke = false;
 	team: any;
 	constructor(
 		private dataService: DataService,
@@ -35,6 +36,12 @@ export class TeamsListComponent implements OnInit {
 	getTeamList(team) {
 		this.team = team;
 		this.isMemberSelected = true;
+	}
+
+	showImage() {
+		this.showJoke = true;
+		this.isMemberSelected = true;
+
 	}
 
 }
