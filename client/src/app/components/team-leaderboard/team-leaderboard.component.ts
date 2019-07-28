@@ -30,7 +30,7 @@ export class TeamLeaderboardComponent implements OnInit {
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			console.log(params.sync);
-			if (params.sync) {
+			if (params.mobile) {
 				this.displaySync = false;
 			}
 		});
