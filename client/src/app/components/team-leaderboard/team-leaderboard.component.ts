@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { DataService } from 'src/app/services/data.service';
@@ -14,10 +14,12 @@ export class TeamLeaderboardComponent implements OnInit {
 	private teams: any;
 	private malePlayers: any;
 	private femalePlayers: any;
+	displaySync = true;
 
 	constructor(
 		private dataService: DataService,
 		private router: Router,
+		private activatedRoute: ActivatedRoute,
 		private spinner: NgxSpinnerService) { }
 
 	ngOnInit() {
@@ -25,6 +27,13 @@ export class TeamLeaderboardComponent implements OnInit {
 		this.loadMaleLeaderboard();
 		this.loadFemaleLeaderboard();
 		this.spinner.hide();
+
+		this.activatedRoute.queryParams.subscribe((params: Params) => {
+			console.log(params.sync);
+			if (params.sync) {
+				this.displaySync = false;
+			}
+		});
 	}
 
 
