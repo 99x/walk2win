@@ -1,5 +1,6 @@
 let Player = require("../models/player");
 let pointCalc = require("../helpers/pointCalculator");
+let bonusCalc = require("../helpers/bonusPointsCalculator");
 
 module.exports.syncStepsManual = async (req, res) => {
   let playerGmail = req.headers.gmail;
@@ -17,6 +18,12 @@ module.exports.syncStepsManual = async (req, res) => {
   let points = pointCalc.calculatePoints({
     steps: steps,
     type: player.team ? 'team' : 'solo'
+  });
+
+  // Add bonus points
+  points += bonusCalc.calculateBonus({
+    steps: steps,
+    date: date
   });
 
   const opt = {
@@ -71,6 +78,11 @@ module.exports.syncSteps = async (req, res) => {
     points: pointCalc.calculatePoints({
       steps: item.steps,
       type: player.team ? 'team' : 'solo'
+    }) 
+    // Add bonus points
+    + bonusCalc.calculatePoints({
+      steps: item.steps,
+      date: new Date(item.date)
     })
 
   }));
