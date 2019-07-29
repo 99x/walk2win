@@ -8,12 +8,12 @@
                 <div>Total Steps</div>
                 <div>Total Points</div>
             </li>
-            <!-- <li class="team">
+            <li class="team">
                 <div>{{ 0 | number : '2.' }}</div>
                 <div><a (click)="showImage()">{{ 'අමරබන්දු රූපසිංහ'| titlecase }}</a></div>
                 <div>{{42213103232 | number : '2.' }}</div>
                 <div>{{ '∞'  }}</div>
-            </li> -->
+            </li>
             <li class="team" *ngFor="let team of teams; let i = index">
                 <div>{{ (i + 1) | number : '2.' }}</div>
                 <div><a (click)="getTeamList(team)">{{ team.name | titlecase }}</a></div>
