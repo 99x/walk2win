@@ -80,7 +80,7 @@ module.exports.syncSteps = async (req, res) => {
       type: player.team ? 'team' : 'solo'
     }) 
     // Add bonus points
-    + bonusCalc.calculatePoints({
+    + bonusCalc.calculateBonus({
       steps: item.steps,
       date: new Date(item.date)
     })
