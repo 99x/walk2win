@@ -23,7 +23,7 @@
                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" [(ngModel)]="model.steps"
                     #steps="ngModel" [ngClass]="{ 'is-invalid': f.submitted && steps.invalid }" required>
 
-                <div class="errormessage" *ngIf="model?.steps > 40000">You have reached the maximum number of
+                <div class="errormessage" *ngIf="model?.steps > 100000">You have reached the maximum number of
                     steps that could be
                     entered.</div>
                 <div *ngIf="f.submitted && steps.invalid" class="invalid-feedback">

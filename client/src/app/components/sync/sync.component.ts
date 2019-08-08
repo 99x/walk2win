@@ -114,7 +114,7 @@ export class SyncComponent implements OnInit {
 	viewStepCount() {
 		this.spinner.show();
 		const timeGap = {
-			endTimeMillis: +new Date(),
+			endTimeMillis: 1565375400000,
 			startTimeMillis: 1563733800000
 		};
 		this.googleFitService.checkCount(timeGap).subscribe(
