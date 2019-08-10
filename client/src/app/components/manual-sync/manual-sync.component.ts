@@ -32,10 +32,10 @@ export class ManualSyncComponent implements OnInit {
 	}
 
 	onSubmit() {
-		if (this.model.steps > 60000) {
+		if (this.model.steps > 100000) {
 			return;
 		}
-		const date = `${this.model.date.year}-${this.model.date.month}-${this.model.date.day}`;
+		const date = `${this.model.date.year}-0${this.model.date.month}-${this.model.date.day}`;
 		if (!moment(date).isSameOrBefore(moment())) {
 			this.dateError = true;
 			return;

@@ -23,8 +23,8 @@ module.exports.unlimitedBonusDates = [
 module.exports.limitedBonusDates = [
     "2019-07-22",
     "2019-07-23",
-    "2019-08-25",
-    "2019-08-26"
+    "2019-07-25",
+    "2019-07-26"
 ];
 
 module.exports.bonusStepThreshold = 12500;

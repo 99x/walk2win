@@ -21,7 +21,6 @@ export class SyncComponent implements OnInit {
 		totalPoints: 0
 	};
 	displayError: string;
-	displaySync = true;
 
 	public getGmail(): string {
 		if (localStorage.getItem('gmail')) {
@@ -51,9 +50,6 @@ export class SyncComponent implements OnInit {
 				this.totals.totalPoints = window.history.state.syncResp.totalPoints;
 				this.totals.totalSteps = window.history.state.syncResp.totalSteps;
 				this.getPlayerScore();
-			}
-			if (params.sync) {
-				this.displaySync = false;
 			}
 		});
 
@@ -118,7 +114,7 @@ export class SyncComponent implements OnInit {
 	viewStepCount() {
 		this.spinner.show();
 		const timeGap = {
-			endTimeMillis: +new Date(),
+			endTimeMillis: 1565375400000,
 			startTimeMillis: 1563733800000
 		};
 		this.googleFitService.checkCount(timeGap).subscribe(
