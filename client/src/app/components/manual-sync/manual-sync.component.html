@@ -38,7 +38,7 @@
                         <input class="form-control" [ngClass]="{ 'is-invalid': f.submitted && date.invalid }"
                             placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model.date" #date="ngModel" ngbDatepicker
                             #d="ngbDatepicker" [minDate]="{year: 2019, month: 7, day: 22}"
-                            [maxDate]="{year: 2019, month: 8, day: 12}" [required]="true">
+                            [maxDate]="{year: 2019, month: 8, day: 9}" [required]="true">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary icon-calendar" (click)="d.toggle()"
                                 type="button"></button>
