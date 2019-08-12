@@ -39,3 +39,4 @@ module.exports.limitedDiv = 1000;
 
 module.exports.limitedThreshhold = 25;
 
+module.exports.contestOver = false;

@@ -63,6 +63,8 @@ export class ManualSyncComponent implements OnInit {
 				this.router.navigate(['/'], { state: { isManualSync: true, syncResp: res } });
 			}
 		}, err => {
+			this.spinner.hide();
+			this.displayError = `Error syncing. Contest over`;
 			console.log(err);
 		});
 	}

@@ -158,6 +158,8 @@ export class SyncComponent implements OnInit {
 			this.totals = res;
 			this.getPlayerScore();
 		}, err => {
+			this.displayError = `Error syncing. Contest over `;
+			this.spinner.hide();
 			console.log(err);
 		});
 
