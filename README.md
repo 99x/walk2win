@@ -107,9 +107,19 @@ PORT=3003
 
 #### client
 
-- Add client setup here
+- Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
 
-Install mongodb and then import sample data
+- Add the keys to the relevant `environment.ts` file in location `client/src/environments`.
+```
+export const environment = {
+	production: true,
+	baseApi: '<add_base_api_here>',
+	client_id: '<add_client_id_here>',
+	apiKey: '<add_apiKey_here>'
+};
+```
+
+#### Install mongodb and then import sample data
 
 ```bash
 $ cd server
@@ -117,20 +127,19 @@ $ cd server
 $ npm run initdb
 ```
 
-Start the REST API
+#### Start the REST API
 
 ```
 $ cd server
 $ npm run dev
 ```
 
-Start the Angular app
+#### Start the Angular app
 
 ```
 $ cd client
 $ ng serve --open
 ```
-
 
 Submit a pull request with the new feature
 
