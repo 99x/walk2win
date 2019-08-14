@@ -115,7 +115,8 @@ PORT=3003
 
 - Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
 
-- Add the keys to the relevant `environment.ts` file in location `client/src/environments`.
+- Add the keys to the relevant `environment.ts` file in location `client/src/environments`. You can select either prod or dev.
+
 ```
 export const environment = {
 	production: true,
@@ -171,6 +172,7 @@ Create containers
 $ cd <repo-name>
 $ sudo docker-compose up --build -d
 ```
+
 ### Initialize db from data.csv
 if you are using external mongodb service directly execute `intialize.sh` from the host. Otherwise(If you are using dockerized mongo instance), Log in to the container and execute `initialize.sh` 
 
