@@ -1,4 +1,13 @@
-# walk2win
+<div align="center">
+   <img src="w2w-logo.png">
+</div>
+<br/>
+
+[![GitHub license](https://img.shields.io/github/license/99xt/walk2win)](https://github.com/99xt/walk2win/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/99xt/walk2win)](https://github.com/99xt/walk2win/issues)
+[![GitHub stars](https://img.shields.io/github/stars/99xt/walk2win)](https://github.com/99xt/walk2win/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/99xt/walk2win)](https://github.com/99xt/walk2win/network)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/99xt/walk2win?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2F99xt%2Fwalk2win)
 
 ### Milestones
 
@@ -26,16 +35,16 @@
 
 ```json
 {
-	"stepCounts": [
-		{
-			"date": "2018-10-12",
-			"steps": 7500
-		},
+    "stepCounts": [
+        {
+            "date": "2018-10-12",
+            "steps": 7500
+        },
     {
-			"date": "2018-12-12",
-			"steps": 8500
-		}	
-	]
+            "date": "2018-12-12",
+            "steps": 8500
+        }    
+    ]
 }
 ```
 
@@ -43,11 +52,11 @@
 
 ```json
 {
-	"stepCounts": 
-		{
-			"date": "2018-10-12",
-			"steps": 7500
-		}
+    "stepCounts": 
+        {
+            "date": "2018-10-12",
+            "steps": 7500
+        }
 }
 ```
 - `GET /api/v1/playersync` - Retrive scores/steps for a specific player
@@ -104,7 +113,17 @@ PORT=3003
 
 #### client
 
-- Add client setup here
+- Follow steps mentioned [here](https://developers.google.com/fit/rest/v1/get-started) to request an OAuth 2.0 client ID and API key.
+
+- Add the keys to the relevant `environment.ts` file in location `client/src/environments`.
+```
+export const environment = {
+	production: true,
+	baseApi: '<add_base_api_here>',
+	client_id: '<add_client_id_here>',
+	apiKey: '<add_apiKey_here>'
+};
+```
 
 Install mongodb and then import sample data
 
@@ -125,9 +144,8 @@ Start the Angular app
 
 ```
 $ cd client
-$ ng serve --open
+$ ng serve -o
 ```
-
 
 Submit a pull request with the new feature
 
@@ -161,3 +179,7 @@ $ sudo docker exec -it --user=root <container_id> /bin/bash -d
 $ cd data
 $ ./initialize.sh
 ```
+
+## License
+
+[MIT](LICENSE)
