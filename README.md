@@ -89,6 +89,20 @@ $ npm i
 $ cd ../server
 $ npm i
 ```
+Setup enviroment configuration
+
+### server
+
+- Setup mongo connection string and the server port from `./server/.env`
+
+```
+MONGO_STR=<database_string>
+PORT=3003
+```
+
+### client
+
+
 Install mongodb and then import sample data
 
 ```bash
