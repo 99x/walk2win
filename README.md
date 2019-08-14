@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="media/w2w-logo.png">
+   <img src="w2w-logo.png">
 </div>
 <br/>
 
