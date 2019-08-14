@@ -119,7 +119,7 @@ export const environment = {
 };
 ```
 
-#### Install mongodb and then import sample data
+Install mongodb and then import sample data
 
 ```bash
 $ cd server
@@ -127,18 +127,18 @@ $ cd server
 $ npm run initdb
 ```
 
-#### Start the REST API
+Start the REST API
 
 ```
 $ cd server
 $ npm run dev
 ```
 
-#### Start the Angular app
+Start the Angular app
 
 ```
 $ cd client
-$ ng serve --open
+$ ng serve -o
 ```
 
 Submit a pull request with the new feature
