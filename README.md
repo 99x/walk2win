@@ -29,16 +29,16 @@
 
 ```json
 {
-	"stepCounts": [
-		{
-			"date": "2018-10-12",
-			"steps": 7500
-		},
+    "stepCounts": [
+        {
+            "date": "2018-10-12",
+            "steps": 7500
+        },
     {
-			"date": "2018-12-12",
-			"steps": 8500
-		}	
-	]
+            "date": "2018-12-12",
+            "steps": 8500
+        }    
+    ]
 }
 ```
 
@@ -46,11 +46,11 @@
 
 ```json
 {
-	"stepCounts": 
-		{
-			"date": "2018-10-12",
-			"steps": 7500
-		}
+    "stepCounts": 
+        {
+            "date": "2018-10-12",
+            "steps": 7500
+        }
 }
 ```
 - `GET /api/v1/playersync` - Retrive scores/steps for a specific player
