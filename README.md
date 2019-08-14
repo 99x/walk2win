@@ -3,6 +3,12 @@
 </div>
 <br/>
 
+[![GitHub license](https://img.shields.io/github/license/99xt/walk2win)](https://github.com/99xt/walk2win/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/99xt/walk2win)](https://github.com/99xt/walk2win/issues)
+[![GitHub stars](https://img.shields.io/github/stars/99xt/walk2win)](https://github.com/99xt/walk2win/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/99xt/walk2win)](https://github.com/99xt/walk2win/network)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/99xt/walk2win?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2F99xt%2Fwalk2win)
+
 ### Milestones
 
 - [x] Create initial project files
@@ -173,3 +179,7 @@ $ sudo docker exec -it --user=root <container_id> /bin/bash -d
 $ cd data
 $ ./initialize.sh
 ```
+
+## License
+
+[MIT](LICENSE)
