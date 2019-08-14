@@ -100,8 +100,11 @@ MONGO_STR=<database_string>
 PORT=3003
 ```
 
+- Add your contest rules into `./server/constants.js`
+
 #### client
 
+- Add client setup here
 
 Install mongodb and then import sample data
 
