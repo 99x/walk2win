@@ -85,7 +85,7 @@
 
 ### Developer Setup
 
-Fork and clone `https://github.com/99xt-incubator/walk2win.git`
+Fork and clone `https://github.com/99xt/walk2win.git`
 
 Install dependencies 
 
