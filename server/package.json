@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --recursive --exit",
+    "coverage": "nyc --reporter=text npm run test",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -r dotenv/config ./server.js",
     "prod": "node -r dotenv/config ./server.js",
     "initdb": "node ./data/initialize.js"
@@ -25,6 +26,7 @@
     "mocha": "^6.2.1",
     "mockgoose": "^8.0.3",
     "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   }
 }
