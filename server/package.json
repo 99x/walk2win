@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --recursive --exit",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -r dotenv/config ./server.js",
     "prod": "node -r dotenv/config ./server.js",
     "initdb": "node ./data/initialize.js"
@@ -21,6 +21,10 @@
     "mongoose": "^5.4.16"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "mockgoose": "^8.0.3",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
