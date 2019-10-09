@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -50,7 +51,8 @@ import { IndividualListComponent } from './components/individual-list/individual
 		HttpClientModule,
 		AppRoutingModule,
 		NgxSpinnerModule,
-		NgbModule],
+		NgbModule,
+		RouterModule],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
