@@ -182,3 +182,9 @@ $ ./initialize.sh
 ## License
 
 [MIT](LICENSE)
+
+<a href="https://github.com/99xt/walk2win/graphs/contributors">
+  <img src="https://contributors-img.firebaseapp.com/image?repo=99xt/walk2win" />
+</a>
+
+Made with [contributors-img](https://contributors-img.firebaseapp.com).
