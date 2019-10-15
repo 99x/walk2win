@@ -179,6 +179,17 @@ $ cd data
 $ ./initialize.sh
 ```
 
+## Contributors
+
+
+<div align="center">
+    <a href="https://github.com/99xt/walk2win/graphs/contributors">
+        <img src="https://contributors-img.firebaseapp.com/image?repo=99xt/walk2win" />
+    </a>
+
+Made with [contributors-img](https://contributors-img.firebaseapp.com).
+</div>
+
 ## License
 
 [MIT](LICENSE)
