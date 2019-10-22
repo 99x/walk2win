@@ -44,20 +44,18 @@ import { IndividualListComponent } from './components/individual-list/individual
 		GoogleFitService,
 		DataService,
 		CookieService,
-		SharedConstants,
-	    HttpClientModule],
+		SharedConstants],
 	imports: [
 		BrowserModule,
 		FormsModule,
 		HttpClientModule,
 		AppRoutingModule,
 		NgxSpinnerModule,
-		NgbModule,
-		RouterModule],
+		NgbModule],
 	bootstrap: [AppComponent],
 	schemas: [
 		CUSTOM_ELEMENTS_SCHEMA,
-		NO_ERRORS_SCHEMA
-	  ]
+		NO_ERRORS_SCHEMA]
 })
+
 export class AppModule { }
