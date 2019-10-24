@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -51,6 +52,10 @@ import { IndividualListComponent } from './components/individual-list/individual
 		AppRoutingModule,
 		NgxSpinnerModule,
 		NgbModule],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	schemas: [
+		CUSTOM_ELEMENTS_SCHEMA,
+		NO_ERRORS_SCHEMA]
 })
+
 export class AppModule { }

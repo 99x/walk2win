@@ -22,4 +22,9 @@ describe('IndividualMaleComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('component navigateBack state', () => {
+		expect(component.navigateBack).toBeDefined();
+		expect(component.navigateBack).toBeTruthy();
+	});
 });
