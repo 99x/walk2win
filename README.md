@@ -7,6 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/99xt/walk2win)](https://github.com/99xt/walk2win/issues)
 [![GitHub stars](https://img.shields.io/github/stars/99xt/walk2win)](https://github.com/99xt/walk2win/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/99xt/walk2win)](https://github.com/99xt/walk2win/network)
+[![GitHub last commit](https://img.shields.io/github/last-commit/99xt/walk2win)](https://img.shields.io/github/last-commit/99xt/walk2win)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/99xt/walk2win?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2F99xt%2Fwalk2win)
 
 ### Milestones
@@ -182,3 +183,9 @@ $ ./initialize.sh
 ## License
 
 [MIT](LICENSE)
+
+<a href="https://github.com/99xt/walk2win/graphs/contributors">
+  <img src="https://contributors-img.firebaseapp.com/image?repo=99xt/walk2win" />
+</a>
+
+Made with [contributors-img](https://contributors-img.firebaseapp.com).

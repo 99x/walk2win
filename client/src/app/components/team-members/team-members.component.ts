@@ -53,5 +53,4 @@ export class TeamMembersComponent implements OnInit {
 	navigateBack() {
 		this.backClicked.emit(true);
 	}
-
 }
