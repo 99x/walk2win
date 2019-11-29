@@ -5,10 +5,24 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const expresValidator = require("express-validator");
 const cors = require("cors");
+const mockgoose = require('mockgoose');
 
-mongoose.connect(process.env.MONGO_STR, {
-  useNewUrlParser: true
-});
+if(process.env.NODE_ENV === 'test'){
+  const Mockgoose = mockgoose.Mockgoose;
+  const mock = new Mockgoose(mongoose);
+  
+  mock.prepareStorage()
+  .then(() => {
+    mongoose.connect(process.env.MONGO_STR, {
+      useNewUrlParser: true
+    });
+  });
+  
+}else{
+  mongoose.connect(process.env.MONGO_STR, {
+    useNewUrlParser: true
+  });
+}
 
 const app = express();
 
