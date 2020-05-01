@@ -12,7 +12,7 @@
 
 ### What is walk2win
 
-Walk to win(also known as walk2win) is an online walking challenge for workplaces. Employees are able to register with this challenge as individual participants or they are able to register as teams. Daily steps count can be recorded by signing into the Google account(via Google Fit platform) or by manual entry. Game leaderboard will show list of players and teams ranked by the total score and steps.
+Walk to win(also known as walk2win) is an online walking challenge for workplaces. Employees are able to register with this challenge as individual participants or they are able to register as teams. Daily steps count can be recorded by signing into the Google account(via Google Fit platform) or by manual entry. Game leaderboard will show a list of players and teams ranked by the total score and steps.
 
 #### Some highlighted features
 
