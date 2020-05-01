@@ -10,6 +10,17 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/99xt/walk2win)](https://img.shields.io/github/last-commit/99xt/walk2win)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/99xt/walk2win?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2F99xt%2Fwalk2win)
 
+### What is walk2win
+
+Walk to win(also known as walk2win) is an online walking challenge for workplaces. Employees are able to register with this challenge as individual participants or they are able to register as teams. Daily steps count can be recorded by signing into the Google account(via Google Fit platform) or by manual entry. Game leaderboard will show list of players and teams ranked by the total score and steps.
+
+#### Some highlighted features
+
+- Easy setup with Docker
+- Fully customizable scoring system with advanced features like bonus scores
+- Mobile friendly dashboard
+- Multiple leaderboard views (male, female and teams)
+
 ### Milestones
 
 - [x] Create initial project files
