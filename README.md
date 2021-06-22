@@ -109,6 +109,12 @@ $ npm i
 ```
 ### Setup enviroment configuration
 
+#### Prerequisites 
+
+- A Docker-installed virtual machine. (Eg: AWS EC2) 
+- A MongoDb instance
+- OAuth 2.0 client ID and API key for Google Fit API
+
 #### server
 
 - Setup mongo connection string and the server port from `./server/.env`
