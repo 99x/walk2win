@@ -8,7 +8,7 @@ const cors = require('cors');
 const mockgoose = require('mockgoose');
 const db = require('./helpers/db');
 
-db.connect();
+if (process.env.NODE_ENV != 'test') db.connect();
 const app = express();
 
 app.use(express.static('../client/dist/walk2win'));
