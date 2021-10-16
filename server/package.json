@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "set NODE_ENV=test&&jest",
+    "test": "set NODE_ENV=test&&jest --detectOpenHandles --forceExit",
     "coverage": "nyc --reporter=text npm run test",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js -r dotenv/config ./server.js",
     "prod": "node -r dotenv/config ./server.js",
