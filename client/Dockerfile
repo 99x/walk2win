@@ -2,7 +2,7 @@
 
 # client build
 
-FROM node:latest as dep
+FROM node:14 as dep
 
 ENV NODE_ENV=production 
 
@@ -12,7 +12,7 @@ COPY package*.json .
 
 RUN npm install
 
-FROM node:latest as build
+FROM node:14 as serve
 
 ENV NODE_ENV=production 
 
@@ -22,17 +22,8 @@ COPY --from=dep /app/node_modules /node_modules
 
 COPY . .
 
-RUN npm run build
+RUN npm install -g @angular/cli@8.0.4
 
-FROM node:latest
-
-ENV NODE_ENV=production 
-
-WORKDIR /app
-
-COPY --from=build /app .
-
-# default port of angular CLI
 EXPOSE 4200
 
-CMD ["npm", "start"]
+CMD ["ng", "serve"]
