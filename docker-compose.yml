@@ -9,4 +9,4 @@ services:
   server:
     build: server/
     ports:
-      - '80:3003'
+      - '3003:3003'
