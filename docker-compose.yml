@@ -1,8 +1,12 @@
 version: '2'
 
 services:
-  server:
-    build: . 
+  client:
+    build: client/
     restart: always
     ports:
-      - "80:3003"
+      - '4200:4200'
+  server:
+    build: server/
+    ports:
+      - '3003:3003'
