@@ -1,18 +1,18 @@
 # escape=`
 
-FROM node:latest as dep
+FROM node:14 as dep
 
-ENV NODE_ENV=production
-
-WORKDIR /app
+WORKDIR app
 
 COPY package*.json .
 
 RUN npm install
 
-FROM node:latest
+FROM node:14 as prod
 
-COPY --from=dep /app/node_modules /node_modules
+WORKDIR app
+
+COPY --from=dep app/node_modules node_modules
 
 COPY . .
 
