@@ -51,7 +51,7 @@ exports.connect = () => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(
-        'mongodb+srv://Shakya:0xHHQ07yRcxKslsC@cluster0.y64qs.mongodb.net/shop?retryWrites=true&w=majority',
+        process.env.MONGO_STR,
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
