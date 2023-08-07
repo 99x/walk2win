@@ -25,12 +25,13 @@ a {
 
 .pagetitle {
   padding: 10px 10px;
-  background: #f47e47;
+  background: #331C7A;
   color: white;
 }
 
 .pagetitle span {
   padding: 10px;
+  cursor:pointer;
 }
 
 .pagetitle i {
@@ -317,10 +318,10 @@ a {
 }
 
 .nav li .active {
-  background-color: #f47e47 !important;
+  background-color: #FF615A !important;
   color: #fff !important;
   border: 0px;
-  border-bottom: 2px solid #f47e47 !important;
+  border-bottom: 2px solid #FF615A !important;
 }
 
 .nav-fill .nav-item {

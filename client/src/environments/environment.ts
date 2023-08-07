@@ -5,8 +5,11 @@
 export const environment = {
 	production: false,
 	baseApi: 'http://localhost:3003',
-	client_id: '<add_client_id_here>',
-	apiKey: '<add_apiKey_here>'
+	client_id: '41746679316-iopgoc3lsnipa6l01voj9me9ecs05e5g.apps.googleusercontent.com',
+	//41746679316-iopgoc3lsnipa6l01voj9me9ecs05e5g.apps.googleusercontent.com
+	apiKey: 'AIzaSyA2Y_l6nBEEP3kKRMLusrjgYRJY-UPwePc',
+	client_secret:"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",
+	redirect_uris:["http://localhost:4200"]
 };
 
 /*

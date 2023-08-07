@@ -1,0 +1,13 @@
+{
+    "web":
+        {
+            "client_id":"41746679316-iopgoc3lsnipa6l01voj9me9ecs05e5g.apps.googleusercontent.com",
+            "project_id":"win2walk",
+            "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+            "token_uri":"https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+            "client_secret":"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",
+            "redirect_uris":["http://localhost:4200"],
+            "javascript_origins":["http://localhost:4200"]
+        }
+}

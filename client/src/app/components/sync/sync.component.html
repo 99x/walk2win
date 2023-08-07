@@ -9,7 +9,9 @@
             <span class="btn btn-primary" (click)="signIn()"><i class="icon-google"></i>
                 Connect GoogleFit</span>
         </div>
+        
     </div>
+    
 
     <div class="connect-container" *ngIf="getGoogleFitService().isSignedIn">
         <span (click)="viewStepCount()" class="btn btn-primary" style="padding: 15px 35px; font-size: 25px;"><i

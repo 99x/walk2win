@@ -56,19 +56,14 @@ export class SyncComponent implements OnInit {
 	}
 
 	signIn() {
-		// if (!localStorage.getItem('googleoauth')) {
-		localStorage.clear();
-		this.googleFitService
-			.init()
-			.then(() => {
-				console.log('inited');
-			})
-			.catch(err => {
-				console.log(err);
-			});
-		// } else {
-		// this.getSyncData();
-		// }
+		try{
+			localStorage.clear();
+			this.spinner.show();
+			this.googleFitService.init()
+			//this.spinner.hide()
+		}catch(error){
+			console.log(error)
+		}
 	}
 
 	getSyncData() {
@@ -113,10 +108,11 @@ export class SyncComponent implements OnInit {
 
 	viewStepCount() {
 		this.spinner.show();
+		//this.googleFitService.calculateStepCount();
 		const timeGap = {
-			endTimeMillis: 1565375400000,
-			startTimeMillis: 1563733800000
-		};
+      endTimeMillis: 1693470000000,
+      startTimeMillis: 1690791600000,
+    };
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
@@ -139,6 +135,7 @@ export class SyncComponent implements OnInit {
 			err => {
 				this.ngZone.run(() => {
 					this.spinner.hide();
+					console.log(err)
 					console.log('error view steps');
 					this.displayError = 'Your google account isnt connected to Google Fit.\
 				 Please logout from Google Fit and login with registered gmail :)';
