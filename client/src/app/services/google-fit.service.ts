@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { SharedConstants } from '../constants/shared.constants';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -16,11 +16,10 @@ export class GoogleFitService {
   public access_token;
 
   constructor(private spinner: NgxSpinnerService) {
-    console.log("Constructor");
+
   }
 
   initClient() {
-    console.log("Inside initLCient");
 	this.loadGapi();
     this.client = google.accounts.oauth2.initTokenClient({
       client_id: environment.client_id,
@@ -39,7 +38,6 @@ export class GoogleFitService {
               // this.access_token = this.client.requestAccessToken();
               // localStorage.setItem('googleoauth', this.access_token);
               // console.log(this.access_token);
-              console.log("Got token");
               this.access_token = tokenResponse.access_token;
               this.getUserInfo(this.access_token);
               //this.isSignedIn = true;
@@ -50,7 +48,6 @@ export class GoogleFitService {
             console.log("No Access");
           }
         } else {
-          console.log("Didnt get the token");
         }
       },
     });
