@@ -20,12 +20,11 @@ export class GoogleFitService {
   }
 
   initClient() {
-	this.loadGapi();
+	  this.loadGapi();
     this.client = google.accounts.oauth2.initTokenClient({
       client_id: environment.client_id,
       scope: SharedConstants.GoogleFitnessApiScope,
       callback: (tokenResponse) => {
-        console.log(tokenResponse);
         if (tokenResponse && tokenResponse.access_token) {
           if (
             google.accounts.oauth2.hasGrantedAnyScope(
@@ -35,14 +34,11 @@ export class GoogleFitService {
             1 == 1
           ) {
             try {
-              // this.access_token = this.client.requestAccessToken();
-              // localStorage.setItem('googleoauth', this.access_token);
-              // console.log(this.access_token);
               this.access_token = tokenResponse.access_token;
               this.getUserInfo(this.access_token);
-              //this.isSignedIn = true;
             } catch (error) {
               console.log(error);
+              this.spinner.hide();
             }
           } else {
             console.log("No Access");
@@ -61,7 +57,7 @@ export class GoogleFitService {
 			apiKey: environment.apiKey,
 			discoveryDocs: [SharedConstants.GoogleFitnessApiUrl],
 		});
-		console.log("Gapi is Loaded")
+		//console.log("Gapi is Loaded")
 	})
   }
 
@@ -94,7 +90,9 @@ export class GoogleFitService {
       });
 
       if (!response.ok) {
+        this.spinner.hide();
         throw new Error("Request failed");
+        
       }
 
       const data = await response.json();
@@ -109,6 +107,7 @@ export class GoogleFitService {
       //return stepCount;
     } catch (error) {
       console.error("Error fetching step count:", error);
+      this.spinner.hide();
       // Handle the error gracefully
     }
   }
@@ -134,9 +133,10 @@ export class GoogleFitService {
       const userEmail = data.emailAddresses[0].value;
       localStorage.setItem("gmail", userEmail);
       this.isSignedIn = true;
-	  this.spinner.hide();
+	    this.spinner.hide();
     } catch (error) {
       console.error("Error fetching Gmail:", error);
+      this.spinner.hide();
       // Handle the error gracefully
     }
   }
@@ -177,14 +177,13 @@ export class GoogleFitService {
         })
         .then(
           (response) => {
-			console.log(response)
+			      //console.log(response)
             const stepVals = [];
             response.result.bucket.forEach((element) => {
               if (element.dataset[0].point[0]) {
                 stepVals.push(element.dataset[0].point[0].value[0].intVal);
               }
             });
-            console.log(response);
             observer.next(response.result);
             observer.complete();
           },
@@ -192,6 +191,7 @@ export class GoogleFitService {
             console.error(err);
             observer.error(err);
             observer.complete();
+            this.spinner.hide();
           }
         );
     });

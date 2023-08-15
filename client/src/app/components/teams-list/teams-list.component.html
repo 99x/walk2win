@@ -20,6 +20,7 @@
         <app-team-members [team]="team" (backClicked)="isMemberSelected = false">
         </app-team-members>
     </div>
+    <div *ngIf="displayError" class="alert alert-danger">{{displayError}}</div>
 </div>
 <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.73)" size="medium" color="#f47e47" type="ball-clip-rotate-pulse"
     [fullScreen]="true">

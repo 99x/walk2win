@@ -58,7 +58,7 @@ export class SyncComponent implements OnInit {
 	signIn() {
 		try{
 			localStorage.clear();
-			this.spinner.show();
+			//this.spinner.show();
 			this.googleFitService.init()
 			//this.spinner.hide()
 		}catch(error){

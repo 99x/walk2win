@@ -29,7 +29,7 @@ export class TeamLeaderboardComponent implements OnInit {
 		this.spinner.hide();
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
-			console.log(params.sync);
+			//console.log(params.sync);
 			if (params.mobile) {
 				this.displaySync = false;
 			}
@@ -38,9 +38,11 @@ export class TeamLeaderboardComponent implements OnInit {
 
 	loadMaleLeaderboard() {
 		const topMaleEndpoint = '/api/v1/leaderboard/topmaleplayers';
-		this.dataService.getTeamsLeaderboardValues(topMaleEndpoint).subscribe((players: any) => {
-			this.malePlayers = players;
-		});
+		this.dataService.getTeamsLeaderboardValues(topMaleEndpoint).subscribe(
+			(players: any) => {
+				this.malePlayers = players;
+			}
+		);
 	}
 	
 	loadFemaleLeaderboard() {

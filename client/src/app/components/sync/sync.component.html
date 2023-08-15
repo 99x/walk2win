@@ -20,7 +20,9 @@
         <br />
 
     </div>
-    <div *ngIf="displayError" class="alert alert-danger">{{displayError}}</div>
+    <div *ngIf="displayError" class="alert alert-danger">
+        {{displayError}}
+    </div>
     <div *ngIf="isStepsCounted">
         <div *ngIf="stepCounts?.total_steps.length ===0" class="pagetitle">Hi {{ getGmail()}},There is no sync data. You
             probably need to
@@ -67,7 +69,7 @@
         </nav>
         <hr />
         <nav class="navbar ">
-            Made with ❤️ by Opensource Initiative
+            Made with ❤️ by Well-Being Innovative
         </nav>
     </div>
 </div>

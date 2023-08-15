@@ -14,6 +14,7 @@ export class TeamsListComponent implements OnInit {
 
 	isMemberSelected: boolean;
 	team: any;
+	displayError: string ;
 	constructor(
 		private dataService: DataService,
 		private spinner: NgxSpinnerService) { }
@@ -26,10 +27,17 @@ export class TeamsListComponent implements OnInit {
 	loadTeamsLeaderboard() {
 		const topTeamsEndpoint = '/api/v1/leaderboard/topteams';
 		this.dataService.getTeamsLeaderboardValues(topTeamsEndpoint)
-			.subscribe((teams: any) => {
-				this.teams = teams;
-				this.spinner.hide();
-			});
+			.subscribe(
+				(teams: any) => {
+					this.teams = teams;
+					this.spinner.hide();
+				},
+				err =>{
+					console.log(err);
+					this.displayError = `Something went wrong.Don't worry! It's not your fault`
+					this.spinner.hide();
+				}
+			);
 	}
 
 	getTeamList(team) {
