@@ -1,0 +1,2 @@
+server/.env
+client/src/environments/environment.prod.ts

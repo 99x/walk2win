@@ -109,10 +109,14 @@ export class SyncComponent implements OnInit {
 	viewStepCount() {
 		this.spinner.show();
 		//this.googleFitService.calculateStepCount();
-		const timeGap = {
-      endTimeMillis: 1693470000000,
-      startTimeMillis: 1690791600000,
-    };
+	// 	const timeGap = {
+    //   endTimeMillis: 1693470000000,
+    //   startTimeMillis: 1690791600000,
+    // };
+	const timeGap = {
+    endTimeMillis: 1693506600000,
+    startTimeMillis: 1690828200000,
+  };
 		this.googleFitService.checkCount(timeGap).subscribe(
 			resp => {
 				console.log(resp);
@@ -137,8 +141,8 @@ export class SyncComponent implements OnInit {
 					this.spinner.hide();
 					console.log(err)
 					console.log('error view steps');
-					this.displayError = 'Your google account isnt connected to Google Fit.\
-				 Please logout from Google Fit and login with registered gmail :)';
+					this.displayError = `Your google account isn't connected to Google Fit.\
+				 Please download GoogleFit app and register with your gmail :)`;
 				});
 
 			}

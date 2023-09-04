@@ -62,6 +62,7 @@ module.exports.syncStepsManual = async (req, res) => {
 };
 
 module.exports.syncSteps = async (req, res) => {
+  console.log("Request recieved");
   let playerGmail = req.headers.gmail;
   let player = await Player.findOne({gmail: playerGmail});
 
@@ -121,7 +122,7 @@ module.exports.syncSteps = async (req, res) => {
     sync = await pointCalc.calculateTotalsTeam(player.team, player.id);
   else
     sync = await pointCalc.calculateTotalsSolo(player.id);
-
+  console.log(sync)
   res.json(sync);
 
 };
