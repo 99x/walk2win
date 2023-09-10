@@ -1,4 +1,5 @@
 let Player = require("../models/player");
+let Team = require("../models/team");
 let pointCalc = require("../helpers/pointCalculator");
 let bonusCalc = require("../helpers/bonusPointsCalculator");
 
